@@ -19,7 +19,7 @@ class MProjectUploadQuery extends \yii\db\ActiveQuery
         parent::init();
 
         if(aIfHideMarkdel()){
-            $this->andWhere(['m_project__upload.markdel_by' => null]);
+            $this->andWhere(['markdel_by' => null]);
         }
     }
 
