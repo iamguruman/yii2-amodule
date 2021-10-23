@@ -17,8 +17,11 @@ class MProjectUploadSearch extends MProjectUpload
     public function rules()
     {
         return [
-            [['id', 'object_id', 'team_by', 'created_by', 'updated_by', 'markdel_by', 'size', 'type_xxx'], 'integer'],
+            [['id', 'object_id', 'team_by', 'created_by', 'updated_by', 'markdel_by', 'size'], 'integer'],
+
             [['created_at', 'updated_at', 'markdel_at', 'filename_original', 'md5', 'ext', 'mimetype'], 'safe'],
+            
+            //[['type_xxx'], 'string'],
         ];
     }
 
