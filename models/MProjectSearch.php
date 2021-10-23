@@ -68,6 +68,9 @@ class MProjectSearch extends MProject
             'markdel_by' => $this->markdel_by,
             'name' => $this->name,
         ]);
+        
+        //$query->andFilterWhere(['like', 'number', $this->number])
+        //    ->andFilterWhere(['like', 'date', $this->date]);
 
         return $dataProvider;
     }
