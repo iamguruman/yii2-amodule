@@ -49,6 +49,30 @@ use app\modules\teams\models\Team;
  * СПИСОК ИНДИВИДУАЛЬНЫХ ПОЛЕЙ:
  * @property int $type_xx
  *
+ *
+ * sql:
+ 
+DROP TABLE IF EXISTS `m_XX__upload`;
+CREATE TABLE `m_XX__upload` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
+`object_id` int(11) DEFAULT NULL COMMENT 'Объект, к которому крепится файл',
+`team_by` int(11) DEFAULT NULL COMMENT 'Команда',
+`created_at` datetime DEFAULT NULL COMMENT 'Добавлено когда',
+`created_by` int(11) DEFAULT NULL COMMENT 'Добавлено кем',
+`updated_at` datetime DEFAULT NULL COMMENT 'Изменено когда',
+`updated_by` int(11) DEFAULT NULL COMMENT 'Изменено кем',
+`markdel_by` int(11) DEFAULT NULL COMMENT 'Удалено кем',
+`markdel_at` datetime DEFAULT NULL COMMENT 'Удалено когда',
+`filename_original` varchar(255) DEFAULT NULL COMMENT 'Оригинальное название файла',
+`md5` varchar(255) DEFAULT NULL,
+`ext` varchar(255) DEFAULT NULL COMMENT 'Расширение файла',
+`mimetype` varchar(255) DEFAULT NULL COMMENT 'Тип файла',
+`size` int(11) DEFAULT NULL COMMENT 'Размер файла',
+`type_anketa` int(11) DEFAULT NULL COMMENT 'Тип файла Анкета для нового покупателя',
+PRIMARY KEY (`id`),
+KEY `object_id` (`object_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+ 
  */
 class MProjectUpload extends \yii\db\ActiveRecord
 {
@@ -60,7 +84,7 @@ class MProjectUpload extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'm_project__upload';
+        return 'm_XX__upload';
     }
 
     /**
