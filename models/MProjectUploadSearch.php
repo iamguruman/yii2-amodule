@@ -71,7 +71,7 @@ class MProjectUploadSearch extends MProjectUpload
             'markdel_by' => $this->markdel_by,
             'markdel_at' => $this->markdel_at,
             'size' => $this->size,
-            'type_xxx' => $this->type_xxx,
+            //'type_xxx' => $this->type_xxx,
         ]);
 
         $query->andFilterWhere(['like', 'filename_original', $this->filename_original])
