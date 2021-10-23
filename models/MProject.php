@@ -28,7 +28,21 @@ use yii\helpers\Html;
  * @property string $name Наименование
  *
  * @property-read MProjectUpload[] $uploads - вложения, см метод getUploads
- *
+ * 
+ * 
+ * sql:
+ 
+ CREATE TABLE `m_TABLE_NAME` (
+  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `created_at` datetime NULL COMMENT 'Добавлено когда',
+  `created_by` int NULL COMMENT 'Добавлено кем',
+  `updated_at` datetime NULL COMMENT 'Изменено когда',
+  `updated_by` int NULL COMMENT 'Изменено кем',
+  `markdel_at` datetime NULL COMMENT 'Удалено когда',
+  `markdel_by` int NULL COMMENT 'Удалено кем',
+  `name` varchar(255) NULL COMMENT 'Наименование'
+);
+ 
  */
 class MProject extends \yii\db\ActiveRecord
 {
@@ -37,7 +51,7 @@ class MProject extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'm_project';
+        return 'm_TABLE_NAME';
     }
 
     /**
