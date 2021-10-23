@@ -78,6 +78,9 @@ class MProject extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
+         
+            'urlTo' => 'Проект',
+            'urlToBlank' => 'Проект',
 
             'created_at' => 'Добавлено когда',
 
