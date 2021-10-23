@@ -17,7 +17,8 @@ class MProjectSearch extends MProject
     public function rules()
     {
         return [
-            [['id', 'created_by', 'updated_by', 'markdel_by', 'name'], 'integer'],
+            [['id', 'created_by', 'updated_by', 'markdel_by'], 'integer'],
+            [['name'], 'string'],
             [['created_at', 'updated_at', 'markdel_at'], 'safe'],
         ];
     }
