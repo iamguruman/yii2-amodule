@@ -125,7 +125,13 @@ class MProject extends \yii\db\ActiveRecord
      * @return string
      */
     public function getTitle(){
-        return "{$this->name}";
+
+        $ret = [];
+        
+        $ret [] = $this->name;
+        
+        return implode(' ', $ret);
+    
     }
 
     public function getUrlToBlank(){
