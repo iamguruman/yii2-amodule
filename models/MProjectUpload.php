@@ -130,15 +130,19 @@ class MProjectUpload extends \yii\db\ActiveRecord
             'id' => 'ID',
 
             'object_id' => 'Проект',
+            'object.urlTo' => 'Проект',
 
             'team_by' => 'Команда',
 
             'created_at' => 'Добавлено когда',
             'created_by' => 'Добавлено кем',
+            'createdBy.lastNameWithInitials' => 'Добавлено кем',
 
             'updated_at' => 'Изменено когда',
             'updated_by' => 'Изменено кем',
+            'updatedBy.lastNameWithInitials' => 'Изменено кем',
 
+            'markdelBy.lastNameWithInitials' => 'Удалено кем',
             'markdel_by' => 'Удалено кем',
             'markdel_at' => 'Удалено когда',
 
