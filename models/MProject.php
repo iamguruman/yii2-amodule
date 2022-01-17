@@ -85,12 +85,12 @@ class MProject extends \yii\db\ActiveRecord
             'created_at' => 'Добавлено когда',
 
             'created_by' => 'Добавлено кем',
-            'createdBy.lastNameWithInitials' => 'Удалено кем',
+            'createdBy.lastNameWithInitials' => 'Добавлено кем',
 
             'updated_at' => 'Изменено когда',
 
             'updated_by' => 'Изменено кем',
-            'updatedBy.lastNameWithInitials' => 'Удалено кем',
+            'updatedBy.lastNameWithInitials' => 'Изменено кем',
 
             'markdel_at' => 'Удалено когда',
 
