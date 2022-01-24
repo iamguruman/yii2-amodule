@@ -39,7 +39,7 @@ class MProjectSearch extends MProject
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search($params, $params2 = [])
     {
         $query = MProject::find();
 
