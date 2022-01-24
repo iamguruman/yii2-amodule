@@ -28,14 +28,14 @@ class Module extends \yii\base\Module
 
     public static function getBreadcrumbs($url = true){
         return [
-            'label' => 'Проекты',
+            'label' => self::moduleTitle,
             'url' => $url ? ['/project/default/index'] : null,
         ];
     }
 
     public static function moduleMenu(){
         $array = [
-            'label' => 'Проекты',
+            'label' => self::moduleTitle,
             'items' => [
                 [
                     'label' => 'Список проектов',
