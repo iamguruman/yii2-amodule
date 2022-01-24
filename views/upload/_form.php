@@ -18,7 +18,7 @@ $module =app\modules\project\Module::moduleId;
     <?= (aIfModuleControllerAction($module, "upload", "view") &&
         aUserMyId() == 1) ? $form->field($model, 'kp_id')->textInput() : null ?>
 
-    <?= (aIfModuleControllerAction($module, "upload", "view") &&
+    <?= (aIfModuleControllerAction($module, "upload", "update") &&
         aUserMyId() == 1) ? $form->field($model, 'filename_original')->textInput(['maxlength' => true]) : null ?>
 
     <?= aIfModuleControllerAction($module, "upload", "create") ?
