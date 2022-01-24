@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\project\models\MProjectUpload */
 
-$module = app\modules\project\Module:moduleId;
+$module = app\modules\project\Module::moduleId;
 
 $this->title = 'Добавить файл';
 
