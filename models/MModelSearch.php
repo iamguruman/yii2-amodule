@@ -9,7 +9,7 @@ use yii\data\ActiveDataProvider;
 /**
  * {_OBJECT_SEARCH_MODEL_NAME_} represents the model behind the search form of `app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}`.
  */
-class {_OBJECT_SEARCH_MODEL_NAME_} extends MProject
+class {_OBJECT_SEARCH_MODEL_NAME_} extends {_OBJECT_MODEL_NAME_}
 {
     /**
      * {@inheritdoc}
