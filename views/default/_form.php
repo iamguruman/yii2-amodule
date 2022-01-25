@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="mproject-form">
+<div class="m{_MODULE_ID_}-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
