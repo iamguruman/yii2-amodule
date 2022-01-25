@@ -4,20 +4,20 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\project\models\MProject */
+/* @var $model app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_} */
 
-/* @var $uploadSearchModel \app\modules\supplierrequest\models\MSupplierrequestUploadSearch */
+/* @var $uploadSearchModel \app\modules\{_MODULE_ID_}\models\{_UPLOAD_SEARCH_MODEL_} */
 /* @var $uploadDataProvider \yii\data\ActiveDataProvider */
 
 $this->title = $model->id;
 
-$this->params['breadcrumbs'][] = app\modules\project\Module::getBreadcrumbs();
+$this->params['breadcrumbs'][] = app\modules\{_MODULE_ID_}\Module::getBreadcrumbs();
 
 $this->params['breadcrumbs'][] = $this->title;
 
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="mproject-view">
+<div class="m{_MODULE_ID_}-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
