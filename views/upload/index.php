@@ -3,22 +3,23 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
-/* @var $searchModel app\modules\project\models\MProjectUploadSearch */
+/* @var $searchModel app\modules\{_MODULE_ID_}\models\{_UPLOAD_SEARCH_MODEL_} */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$module = app\modules\project\Module::moduleId;
+$module = app\modules\{_MODULE_ID_}\Module::moduleId;
 $controller = "upload";
 $action = "index";
 
 if(aIfModuleControllerAction($module, $controller, $action)){
-    $this->params['breadcrumbs'][] = app\modules\project\Module::getBreadcrumbs();
+    $this->params['breadcrumbs'][] = app\modules\{_MODULE_ID_}\Module::getBreadcrumbs();
     $this->title = 'Файлы';
     $this->params['breadcrumbs'][] = $this->title;
 }
 
 ?>
-<div class="mproject-upload-index">
+<div class="m{_MODULE_ID_}-upload-index">
 
     <?= aHtmlHeader($this->title, $module, $controller, $action) ?>
 
@@ -64,14 +65,14 @@ if(aIfModuleControllerAction($module, $controller, $action)){
 
             ['class' => 'yii\grid\ActionColumn', 'template' => '{download} {view}', 'buttons' => [
 
-                'download' => function($url, \app\modules\project\models\MProjectUpload $model, $key){
+                'download' => function($url, \app\modules\{_MODULE_ID_}\models\{_UPLOAD_MODEL_NAME_} $model, $key){
                     return Html::a("<i class='fas fa-download'></i>",
                         ["/_uploads/{$model->md5}.{$model->ext}"],
                         ['data-pjax' => 0, 'target' => '_blank']);
                 },
 
-                'view' => function($url, \app\modules\project\models\MProjectUpload $model, $key){
-                    return Html::a("<i class='fas fa-eye'></i>", ['/project/upload/view', 'id' => $model->id], ['data-pjax' => 0]);
+                'view' => function($url, \app\modules\{_MODULE_ID_}\models\{_UPLOAD_MODEL_NAME_} $model, $key){
+                    return Html::a("<i class='fas fa-eye'></i>", ['/{_MODULE_ID_}/upload/view', 'id' => $model->id], ['data-pjax' => 0]);
                 },
 
             ]],
