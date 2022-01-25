@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\project\models;
+namespace app\modules\{_MODULE_ID_}\models;
 
 /**
- * This is the ActiveQuery class for [[MProject]].
+ * This is the ActiveQuery class for [[{_OBJECT_MODEL_NAME_}]].
  *
- * @see MProject
+ * @see {_OBJECT_MODEL_NAME_}
  */
-class MProjectQuery extends \yii\db\ActiveQuery
+class {_OBJECT_MODEL_QUERY_} extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -19,13 +19,13 @@ class MProjectQuery extends \yii\db\ActiveQuery
         parent::init();
 
         if(aIfHideMarkdel()){
-            $this->andWhere(['m_project.markdel_by' => null]);
+            $this->andWhere(['{_OBJECT_TABLE_NAME_}.markdel_by' => null]);
         }
     }
 
     /**
      * {@inheritdoc}
-     * @return MProject[]|array
+     * @return {_OBJECT_MODEL_NAME_}[]|array
      */
     public function all($db = null)
     {
@@ -34,7 +34,7 @@ class MProjectQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return MProject|array|null
+     * @return {_OBJECT_MODEL_NAME_}|array|null
      */
     public function one($db = null)
     {
