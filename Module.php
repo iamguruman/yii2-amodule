@@ -19,7 +19,7 @@ class Module extends \yii\base\Module
     
     const moduleUrl = "/".self::moduleId;
 
-    const moduleTitle = 'Проекты';
+    const moduleTitle = "{_MODULE_TITLE_}";
 
     // удялет из меню со списком всех модулей
     const removeFromModuleMenu = true;
@@ -39,11 +39,11 @@ class Module extends \yii\base\Module
             'label' => self::moduleTitle,
             'items' => [
                 [
-                    'label' => 'Список проектов',
+                    'label' => "{_OBJECT_LIST_TITLE_}",
                     'url' => self::moduleUrl,
                 ],
                 [
-                    'label' => '&nbsp;&nbsp;&nbsp;добавить проект',
+                    'label' => '&nbsp;&nbsp;&nbsp;добавить',
                     'url' => self::moduleUrl.'/default/create',
                 ],
             ]
