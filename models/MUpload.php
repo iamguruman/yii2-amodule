@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\project\models;
+namespace app\modules\{_MODULE_ID_}\models;
 
 use Yii;
 use app\modules\users\models\User;
 use app\modules\teams\models\Team;
 
 /**
- * This is the model class for table "m_project__upload".
+ * This is the model class for table "{_UPLOAD_MODEL_NAME_}".
  *
  * @property int $id
  *
@@ -42,39 +42,15 @@ use app\modules\teams\models\Team;
  * ПОЛЕ ИДЕНТИФИКАТОР ОБЪЕКТА, к котором цепляем файл:
  *
  * @property int $object_id
- * @property MProject $object
- * @property MProject $project
+ * @property {_OBJECT_MODEL_NAME_} $object
+ * @property {_OBJECT_MODEL_NAME_} $project
  *
  *
  * СПИСОК ИНДИВИДУАЛЬНЫХ ПОЛЕЙ:
  * @property int $type_xx
  *
- *
- * sql:
- 
-DROP TABLE IF EXISTS `m_XX__upload`;
-CREATE TABLE `m_XX__upload` (
-`id` int(11) NOT NULL AUTO_INCREMENT,
-`object_id` int(11) DEFAULT NULL COMMENT 'Объект, к которому крепится файл',
-`team_by` int(11) DEFAULT NULL COMMENT 'Команда',
-`created_at` datetime DEFAULT NULL COMMENT 'Добавлено когда',
-`created_by` int(11) DEFAULT NULL COMMENT 'Добавлено кем',
-`updated_at` datetime DEFAULT NULL COMMENT 'Изменено когда',
-`updated_by` int(11) DEFAULT NULL COMMENT 'Изменено кем',
-`markdel_by` int(11) DEFAULT NULL COMMENT 'Удалено кем',
-`markdel_at` datetime DEFAULT NULL COMMENT 'Удалено когда',
-`filename_original` varchar(255) DEFAULT NULL COMMENT 'Оригинальное название файла',
-`md5` varchar(255) DEFAULT NULL,
-`ext` varchar(255) DEFAULT NULL COMMENT 'Расширение файла',
-`mimetype` varchar(255) DEFAULT NULL COMMENT 'Тип файла',
-`size` int(11) DEFAULT NULL COMMENT 'Размер файла',
-`type_anketa` int(11) DEFAULT NULL COMMENT 'Тип файла Анкета для нового покупателя',
-PRIMARY KEY (`id`),
-KEY `object_id` (`object_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
- 
  */
-class MProjectUpload extends \yii\db\ActiveRecord
+class {_UPLOAD_MODEL_NAME_} extends \yii\db\ActiveRecord
 {
 
     public $files;
@@ -84,7 +60,7 @@ class MProjectUpload extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'm_XX__upload';
+        return '{_UPLOAD_TABLE_NAME_}';
     }
 
     /**
@@ -129,8 +105,8 @@ class MProjectUpload extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
 
-            'object_id' => 'Проект',
-            'object.urlTo' => 'Проект',
+            'object_id' => '{_MODULE_TITLE_}',
+            'object.urlTo' => '{_MODULE_TITLE_}',
 
             'team_by' => 'Команда',
 
@@ -164,7 +140,7 @@ class MProjectUpload extends \yii\db\ActiveRecord
      */
     public function getObject()
     {
-        return $this->hasOne(MProject::className(), ['id' => 'object_id']);
+        return $this->hasOne({_OBJECT_MODEL_NAME_}::className(), ['id' => 'object_id']);
     }
 
     /**
@@ -201,10 +177,10 @@ class MProjectUpload extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return MProjectUploadQuery the active query used by this AR class.
+     * @return {_UPLOAD_MODEL_NAME_} the active query used by this AR class.
      */
     public static function find()
     {
-        return new MProjectUploadQuery(get_called_class());
+        return new {_UPLOAD_MODEL_QUERY_}(get_called_class());
     }
 }
