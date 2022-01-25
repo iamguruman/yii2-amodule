@@ -9,7 +9,7 @@ use yii\widgets\DetailView;
 /* @var $uploadSearchModel \app\modules\{_MODULE_ID_}\models\{_UPLOAD_SEARCH_MODEL_} */
 /* @var $uploadDataProvider \yii\data\ActiveDataProvider */
 
-$this->title = $model->id;
+$this->title = $model->name;
 
 $this->params['breadcrumbs'][] = app\modules\{_MODULE_ID_}\Module::getBreadcrumbs();
 
