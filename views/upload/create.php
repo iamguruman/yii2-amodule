@@ -3,13 +3,13 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\project\models\MProjectUpload */
+/* @var $model app\modules\{_MODULE_ID_}\models\{_UPLOAD_MODEL_NAME_} */
 
-$module = app\modules\project\Module::moduleId;
+$module = app\modules\{_MODULE_ID_}\Module::moduleId;
 
 $this->title = 'Добавить файл';
 
-$this->params['breadcrumbs'][] = \app\modules\project\Module::getBreadcrumbs();
+$this->params['breadcrumbs'][] = \app\modules\{_MODULE_ID_}\Module::getBreadcrumbs();
 
 if($model->object){
     $this->params['breadcrumbs'][] = $model->object->getBreadcrumbs();
@@ -21,7 +21,7 @@ if($model->object){
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="mproject-upload-create">
+<div class="m{_MODULE_ID_}-upload-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
