@@ -4,14 +4,15 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\project\models\MProjectUpload */
+/* @var $model app\modules\{_MODULE_ID_}\models\{_UPLOAD_MODEL_NAME_} */
 
-$module = app\modules\project\Module::moduleId;
+$module = app\modules\{_MODULE_ID_}\Module::moduleId;
+
 $controller = 'upload';
 
 $this->title = $model->filename_original;
 
-$this->params['breadcrumbs'][] = app\modules\project\Module::getBreadcrumbs();
+$this->params['breadcrumbs'][] = app\modules\{_MODULE_ID_}\Module::getBreadcrumbs();
 
 if($model->object){
     $this->params['breadcrumbs'][] = $model->object->getBreadcrumbs();
@@ -24,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="mproject-upload-view">
+<div class="m{_MODULE_ID_}-upload-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
