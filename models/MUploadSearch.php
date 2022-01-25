@@ -1,15 +1,15 @@
 <?php
 
-namespace app\modules\project\models;
+namespace app\modules\{_MODULE_ID_}\models;
 
+use app\modules\{_MODULE_ID_}\models\{_UPLOAD_MODEL_NAME_};
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\project\models\MProjectUpload;
 
 /**
- * MProjectUploadSearch represents the model behind the search form of `app\modules\project\models\MProjectUpload`.
+ * {_UPLOAD_SEARCH_MODEL_} represents the model behind the search form of `app\modules\{_MODULE_ID_}\models\{_UPLOAD_MODEL_NAME_}`.
  */
-class MProjectUploadSearch extends MProjectUpload
+class {_UPLOAD_SEARCH_MODEL_} extends {_UPLOAD_MODEL_NAME_}
 {
     /**
      * {@inheritdoc}
@@ -43,7 +43,7 @@ class MProjectUploadSearch extends MProjectUpload
      */
     public function search($params, $params2 = [])
     {
-        $query = MProjectUpload::find();
+        $query = {_UPLOAD_MODEL_NAME_}::find();
 
         // add conditions that should always apply here
 
