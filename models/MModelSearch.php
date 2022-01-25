@@ -1,15 +1,15 @@
 <?php
 
-namespace app\modules\project\models;
+namespace app\modules\{_MODULE_ID_}\models;
 
+use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_};
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\modules\project\models\MProject;
 
 /**
- * MProjectSearch represents the model behind the search form of `app\modules\project\models\MProject`.
+ * {_OBJECT_SEARCH_MODEL_NAME_} represents the model behind the search form of `app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}`.
  */
-class MProjectSearch extends MProject
+class {_OBJECT_SEARCH_MODEL_NAME_} extends MProject
 {
     /**
      * {@inheritdoc}
@@ -41,7 +41,7 @@ class MProjectSearch extends MProject
      */
     public function search($params, $params2 = [])
     {
-        $query = MProject::find();
+        $query = {_OBJECT_MODEL_NAME_}::find();
 
         // add conditions that should always apply here
 
