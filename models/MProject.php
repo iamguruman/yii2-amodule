@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\project\models;
+namespace app\modules\{_MODULE_ID_}\models;
 
 use Yii;
 use app\modules\users\models\User;
 use yii\helpers\Html;
 
 /**
- * This is the model class for table "m_project".
+ * This is the model class for table "{_OBJECT_TABLE_NAME_}".
  *
  * @property int $id
  * @property string $created_at Добавлено когда
@@ -29,29 +29,15 @@ use yii\helpers\Html;
  *
  * @property-read MProjectUpload[] $uploads - вложения, см метод getUploads
  * 
- * 
- * sql:
- 
- CREATE TABLE `m_TABLE_NAME` (
-  `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  `created_at` datetime NULL COMMENT 'Добавлено когда',
-  `created_by` int NULL COMMENT 'Добавлено кем',
-  `updated_at` datetime NULL COMMENT 'Изменено когда',
-  `updated_by` int NULL COMMENT 'Изменено кем',
-  `markdel_at` datetime NULL COMMENT 'Удалено когда',
-  `markdel_by` int NULL COMMENT 'Удалено кем',
-  `name` varchar(255) NULL COMMENT 'Наименование'
-);
- 
  */
-class MProject extends \yii\db\ActiveRecord
+class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return 'm_TABLE_NAME';
+        return '{_OBJECT_TABLE_NAME_}';
     }
 
     /**
@@ -106,7 +92,7 @@ class MProject extends \yii\db\ActiveRecord
      * @return array
      */
     public function getUrlView(){
-        return ['/project/default/view', 'id' => $this->id];
+        return ['/{_MODULE_ID_}/default/view', 'id' => $this->id];
     }
 
     /**
@@ -114,7 +100,7 @@ class MProject extends \yii\db\ActiveRecord
      * @return array
      */
     public function getUrlIndex(){
-        return ['/project/default/index'];
+        return ['/{_MODULE_ID_}/default/index'];
     }
 
     public function getUrlTo($target = null){
@@ -178,15 +164,15 @@ class MProject extends \yii\db\ActiveRecord
      */
     public function getUploads()
     {
-        return $this->hasMany(MProjectUpload::className(), ['object_id' => 'id']);
+        return $this->hasMany({_UPLOAD_MODEL_NAME_}::className(), ['object_id' => 'id']);
     }
 
     /**
      * {@inheritdoc}
-     * @return MProjectQuery the active query used by this AR class.
+     * @return {_OBJECT_MODEL_QUERY_} the active query used by this AR class.
      */
     public static function find()
     {
-        return new MProjectQuery(get_called_class());
+        return new {_OBJECT_MODEL_QUERY_}(get_called_class());
     }
 }
