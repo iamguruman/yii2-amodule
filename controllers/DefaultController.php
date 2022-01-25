@@ -13,7 +13,7 @@ use yii\filters\VerbFilter;
 use Yii;
 
 /**
- * DefaultController implements the CRUD actions for MProject model.
+ * DefaultController implements the CRUD actions for {_OBJECT_MODEL_NAME_} model.
  */
 class DefaultController extends Controller
 {
@@ -155,7 +155,7 @@ class DefaultController extends Controller
      * Finds the {_OBJECT_MODEL_NAME_} model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return MProject the loaded model
+     * @return {_OBJECT_MODEL_NAME_} the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
