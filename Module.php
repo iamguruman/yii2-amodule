@@ -6,7 +6,7 @@ use app\components\ModuleAccess;
 use yii\helpers\ArrayHelper;
 
 /**
- * project module definition class
+ * {_MODULE_ID_} module definition class
  */
 class Module extends \yii\base\Module
 {
