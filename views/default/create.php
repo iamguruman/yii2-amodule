@@ -3,11 +3,11 @@
 use yii\helpers\Html;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\project\models\MProject */
+/* @var $model app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_} */
 
-$this->title = 'Создать проект';
+$this->title = '{_OBJECT_CREATE_TITLE_}';
 
-$this->params['breadcrumbs'][] = app\modules\project\Module::getBreadcrumbs();
+$this->params['breadcrumbs'][] = app\modules\{_MODULE_ID_}\Module::getBreadcrumbs();
 
 $this->params['breadcrumbs'][] = $this->title;
 
