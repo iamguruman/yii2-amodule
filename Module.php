@@ -1,6 +1,6 @@
 <?php
 
-namespace app\modules\project;
+namespace app\modules\{_MODULE_ID_};
 
 use app\components\ModuleAccess;
 use yii\helpers\ArrayHelper;
@@ -13,12 +13,13 @@ class Module extends \yii\base\Module
     /**
      * {@inheritdoc}
      */
-    public $controllerNamespace = 'app\modules\project\controllers';
+    public $controllerNamespace = 'app\modules\{_MODULE_ID_}\controllers';
+
+    const moduleId = "{_MODULE_ID_}";
+    
+    const moduleUrl = "/".self::moduleId;
 
     const moduleTitle = 'Проекты';
-    const moduleUrl = "/project/";
-
-    const moduleId = "project";
 
     // удялет из меню со списком всех модулей
     const removeFromModuleMenu = true;
@@ -29,7 +30,7 @@ class Module extends \yii\base\Module
     public static function getBreadcrumbs($url = true){
         return [
             'label' => self::moduleTitle,
-            'url' => $url ? ['/project/default/index'] : null,
+            'url' => $url ? [self::moduleUrl.'/default/index'] : null,
         ];
     }
 
@@ -39,11 +40,11 @@ class Module extends \yii\base\Module
             'items' => [
                 [
                     'label' => 'Список проектов',
-                    'url' => '/project/',
+                    'url' => self::moduleUrl,
                 ],
                 [
                     'label' => '&nbsp;&nbsp;&nbsp;добавить проект',
-                    'url' => '/project/default/create',
+                    'url' => self::moduleUrl.'/default/create',
                 ],
             ]
         ];
