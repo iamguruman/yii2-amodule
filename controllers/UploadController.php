@@ -1,19 +1,19 @@
 <?php
 
-namespace app\modules\project\controllers;
+namespace app\modules\{_MODULE_ID_}\controllers;
 
-use app\modules\project\models\MProject;
-use Yii;
-use app\modules\project\models\MProjectUpload;
-use app\modules\project\models\MProjectUploadSearch;
+use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_};
+use app\modules\{_MODULE_ID_}\models\{_UPLOAD_MODEL_NAME_};
+use app\modules\{_MODULE_ID_}\models\{_UPLOAD_SEARCH_MODEL_};
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\web\UploadedFile;
+use Yii;
 
 /**
- * UploadController implements the CRUD actions for MProjectUpload model.
+ * UploadController implements the CRUD actions for {_UPLOAD_MODEL_NAME_} model.
  */
 class UploadController extends Controller
 {
@@ -42,12 +42,12 @@ class UploadController extends Controller
     }
 
     /**
-     * Lists all MProjectUpload models.
+     * Lists all {_UPLOAD_MODEL_NAME_} models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new MProjectUploadSearch();
+        $searchModel = new {_UPLOAD_SEARCH_MODEL_}();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->setSort(['defaultOrder' => ['id' => SORT_DESC]]);
 
@@ -58,7 +58,7 @@ class UploadController extends Controller
     }
 
     /**
-     * Displays a single MProjectUpload model.
+     * Displays a single {_UPLOAD_MODEL_NAME_} model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -73,19 +73,19 @@ class UploadController extends Controller
     }
 
     /**
-     * Creates a new MProjectUpload model.
+     * Creates a new {_UPLOAD_MODEL_NAME_} model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new MProjectUpload();
+        $model = new {_UPLOAD_MODEL_NAME_}();
 
         $model->team_by = aTeamDefaultId();
         $model->created_at = aDateNow();
         $model->created_by = aUserMyId();
 
-        if($object = MProject::findOne(aGet('object'))){
+        if($object = {_OBJECT_MODEL_NAME_}::findOne(aGet('object'))){
             $model->object_id = $object->id;
         }
 
@@ -110,9 +110,9 @@ class UploadController extends Controller
                     $uploadedFile->saveAs($filePath);
                 }
 
-                if(MProjectUpload::find()->andWhere(['md5' => $md5, 'object_id' => $object->id])->count() == 0){
+                if({_UPLOAD_MODEL_NAME_}::find()->andWhere(['md5' => $md5, 'object_id' => $object->id])->count() == 0){
 
-                    $uploadModel = new MProjectUpload();  // поменять название модели
+                    $uploadModel = new {_UPLOAD_MODEL_NAME_}();  // поменять название модели
                     $uploadModel->object_id = $object->id;
 
                     $uploadModel->team_by = aTeamDefaultId();
@@ -147,7 +147,7 @@ class UploadController extends Controller
     }
 
     /**
-     * Updates an existing MProjectUpload model.
+     * Updates an existing {_UPLOAD_MODEL_NAME_} model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -159,7 +159,7 @@ class UploadController extends Controller
 
         if ($model->load(Yii::$app->request->post())){
             if($model->save()) {
-                return $this->redirect(['/project/default/view', 'id' => $model->object_id, 'tab' => 'files']);
+                return $this->redirect(['/{_MODULE_ID_}/default/view', 'id' => $model->object_id, 'tab' => 'files']);
             }
         }
 
@@ -169,7 +169,7 @@ class UploadController extends Controller
     }
 
     /**
-     * Deletes an existing MProjectUpload model.
+     * Deletes an existing {_UPLOAD_MODEL_NAME_} model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -180,21 +180,21 @@ class UploadController extends Controller
         $model = $this->findModel($id);
 
         return aControllerActionMarkdel($this, $model,
-            ['/project/default/view', 'id' => $model->object_id, 'tab' => 'files'],
-            ['/project/default/view', 'id' => $model->object_id, 'tab' => 'files']
+            ['/{_MODULE_ID_}/default/view', 'id' => $model->object_id, 'tab' => 'files'],
+            ['/{_MODULE_ID_}/default/view', 'id' => $model->object_id, 'tab' => 'files']
         );
     }
 
     /**
-     * Finds the MProjectUpload model based on its primary key value.
+     * Finds the {_UPLOAD_MODEL_NAME_} model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return MProjectUpload the loaded model
+     * @return {_UPLOAD_MODEL_NAME_} the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = MProjectUpload::findOne($id)) !== null) {
+        if (($model = {_UPLOAD_MODEL_NAME_}::findOne($id)) !== null) {
             return $model;
         }
 
