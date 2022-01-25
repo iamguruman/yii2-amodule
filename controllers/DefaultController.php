@@ -2,8 +2,8 @@
 
 namespace app\modules\{_MODULE_ID_}\controllers;
 
-use app\modules\{_MODULE_ID_}\models\MProjectUpload;
-use app\modules\{_MODULE_ID_}\models\MProjectUploadSearch;
+use app\modules\{_MODULE_ID_}\models\{_UPLOAD_MODEL_NAME_};
+use app\modules\{_MODULE_ID_}\models\{_UPLOAD_SEARCH_MODEL_};
 use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_};
 use app\modules\{_MODULE_ID_}\models\{_OBJECT_SEARCH_MODEL_NAME_};
 use yii\filters\AccessControl;
