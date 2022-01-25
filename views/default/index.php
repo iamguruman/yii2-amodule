@@ -3,23 +3,24 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
-/* @var $searchModel app\modules\project\models\MProjectSearch */
+/* @var $searchModel app\modules\{_MODULE_ID_}\models\{_OBJECT_SEARCH_MODEL_NAME_} */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$module = app\modules\project\Module::moduleId;
+$module = app\modules\{_MODULE_ID_}\Module::moduleId;
 $controller = "default";
 $action = "index";
 
 if(aIfModuleControllerAction($module, $controller, $action)){
 
-    $this->title = \app\modules\project\Module::moduleTitle;
+    $this->title = \app\modules\{_MODULE_ID_}\Module::moduleTitle;
 
     $this->params['breadcrumbs'][] = $this->title;
 }
 
 ?>
-<div class="mproject-index">
+<div class="m{_MODULE_ID_}-index">
 
     <?= aHtmlHeader($this->title, $module, $controller, $action) ?>
 
@@ -46,17 +47,17 @@ if(aIfModuleControllerAction($module, $controller, $action)){
             'name',
 
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {files}', 'buttons' => [
-                'view' => function($url, $model, $key){
+                'view' => function($url, \app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_} $model, $key){
                     return aGridViewActionColumnViewButton($model, $model->getUrlView());
                 },
 
-                'files' => function($url, \app\modules\project\models\MProject $model, $key){
+                'files' => function($url, \app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_} $model, $key){
 
                     $count = count($model->uploads);
 
                     if($count > 0){
                         return Html::a("<i class='fas fa-paperclip'>{$count}</i>",
-                            ["/project/default/view", 'id' => $model->id, 'tab' => 'files'],
+                            ["/{_MODULE_ID_}/default/view", 'id' => $model->id, 'tab' => 'files'],
                             ['data-pjax' => 0]);
                     }
 
