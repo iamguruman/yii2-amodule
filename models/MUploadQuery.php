@@ -1,13 +1,13 @@
 <?php
 
-namespace app\modules\project\models;
+namespace app\modules\{_MODULE_ID_}\models;
 
 /**
- * This is the ActiveQuery class for [[MProjectUpload]].
+ * This is the ActiveQuery class for [[{_UPLOAD_MODEL_NAME_}]].
  *
- * @see MProjectUpload
+ * @see {_UPLOAD_MODEL_NAME_}
  */
-class MProjectUploadQuery extends \yii\db\ActiveQuery
+class {_UPLOAD_MODEL_QUERY_} extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -25,7 +25,7 @@ class MProjectUploadQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return MProjectUpload[]|array
+     * @return {_UPLOAD_MODEL_NAME_}[]|array
      */
     public function all($db = null)
     {
@@ -34,7 +34,7 @@ class MProjectUploadQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return MProjectUpload|array|null
+     * @return {_UPLOAD_MODEL_NAME_}|array|null
      */
     public function one($db = null)
     {
