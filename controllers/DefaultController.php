@@ -1,16 +1,16 @@
 <?php
 
-namespace app\modules\project\controllers;
+namespace app\modules\{_MODULE_ID_}\controllers;
 
-use app\modules\project\models\MProjectUpload;
-use app\modules\project\models\MProjectUploadSearch;
-use Yii;
-use app\modules\project\models\MProject;
-use app\modules\project\models\MProjectSearch;
+use app\modules\{_MODULE_ID_}\models\MProjectUpload;
+use app\modules\{_MODULE_ID_}\models\MProjectUploadSearch;
+use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_};
+use app\modules\{_MODULE_ID_}\models\{_OBJECT_SEARCH_MODEL_NAME_};
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use Yii;
 
 /**
  * DefaultController implements the CRUD actions for MProject model.
@@ -43,12 +43,12 @@ class DefaultController extends Controller
 
 
     /**
-     * Lists all MProject models.
+     * Lists all {_OBJECT_MODEL_NAME_} models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new MProjectSearch();
+        $searchModel = new {_OBJECT_SEARCH_MODEL_NAME_}();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->setSort(['defaultOrder' => ['name' => SORT_ASC]]);
 
@@ -59,7 +59,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Displays a single MProject model.
+     * Displays a single {_OBJECT_MODEL_NAME_} model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -69,7 +69,7 @@ class DefaultController extends Controller
 
         $model =  $this->findModel($id);
 
-        $uploadSearchModel = new MProjectUploadSearch();
+        $uploadSearchModel = new {_UPLOAD_SEARCH_MODEL_}();
         $uploadDataProvider = $uploadSearchModel->search(Yii::$app->request->queryParams, [
             'object_id' => $model->id
         ]);
@@ -86,13 +86,13 @@ class DefaultController extends Controller
     }
 
     /**
-     * Creates a new MProject model.
+     * Creates a new {_OBJECT_MODEL_NAME_} model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new MProject();
+        $model = new {_OBJECT_MODEL_NAME_}();
 
         $model->created_at = aDateNow();
         $model->created_by = aUserMyId();
@@ -110,7 +110,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Updates an existing MProject model.
+     * Updates an existing {_OBJECT_MODEL_NAME_} model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -136,7 +136,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Deletes an existing MProject model.
+     * Deletes an existing {_OBJECT_MODEL_NAME_} model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -152,7 +152,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * Finds the MProject model based on its primary key value.
+     * Finds the {_OBJECT_MODEL_NAME_} model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
      * @return MProject the loaded model
@@ -160,7 +160,7 @@ class DefaultController extends Controller
      */
     protected function findModel($id)
     {
-        if (($model = MProject::findOne($id)) !== null) {
+        if (($model = {_OBJECT_MODEL_NAME_}::findOne($id)) !== null) {
             return $model;
         }
 
