@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = app\modules\{_MODULE_ID_}\Module::getBreadcrumb
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="mproject-create">
+<div class="m{_MODULE_ID_}-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
