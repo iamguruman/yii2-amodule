@@ -27,7 +27,7 @@ use yii\helpers\Html;
  *
  * @property string $name Наименование
  *
- * @property-read MProjectUpload[] $uploads - вложения, см метод getUploads
+ * @property-read {_UPLOAD_MODEL_NAME_}[] $uploads - вложения, см метод getUploads
  * 
  */
 class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
