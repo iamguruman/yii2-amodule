@@ -43,7 +43,6 @@ use app\modules\teams\models\Team;
  *
  * @property int $object_id
  * @property {_OBJECT_MODEL_NAME_} $object
- * @property {_OBJECT_MODEL_NAME_} $project
  *
  *
  * СПИСОК ИНДИВИДУАЛЬНЫХ ПОЛЕЙ:
