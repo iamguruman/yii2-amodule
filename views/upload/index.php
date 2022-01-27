@@ -45,13 +45,9 @@ if(aIfModuleControllerAction($module, $controller, $action)){
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            [
-                'attribute' => 'id',
-                'format' => 'raw',
-                'value' => function($model){
-                    return aGridVIewColumnId($model);
-                }
-            ],
+            ['attribute' => 'id',
+                'headerOptions' => ['style' => 'width:100px;'],
+                'format' => 'raw', 'value' => function($model) { return aGridVIewColumnId($model); }],  
 
             aIfModuleControllerAction($module, "default", "view") ? ['visible' => false] : [
                 'attribute' => 'object_id',
