@@ -4,6 +4,7 @@ namespace app\modules\modules\controllers;
 
 use Yii;
 use yii\filters\AccessControl;
+use yii\helpers\Html;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 
@@ -35,26 +36,52 @@ class ModuleCreateController extends Controller
         ];
     }
 
-    private $module_id = "hat_letter";
+    //
+    // MODULE
+    //
 
-    private $module_title = "Шляпы письма";
+    private $module_id = "op_kp";
 
-    private $object_table_name = "m_hatletter";
-    private $object_model_name = "MHatLetter";
-    private $object_model_query = "MHatLetterQuery";
-    private $object_search_model_name = "MHatLetterSearch";
-    private $object_data_provider = "MHatLetterDataProvider";
-    private $object_list_title = "Список шляп";
-    private $object_create_title = "Создать шляпу";
+    private $module_title = "Предварительный расчет";
 
-    private $upload_table_name = "m_hatletter__upload";
-    private $upload_model_name = "MHatLetterUpload";
-    private $upload_model_query = "MHatLetterUploadQuery";
-    private $upload_search_model_name = "MHatLetterUploadSearch";
-    private $upload_data_provider = "MHatLetterUploadDataProvider";
+    //
+    // OBJECT
+    //
+    private $object_table_name = "m_op_kp";
 
+    private $object_model_name = "MOpKp";
+    private $object_model_query;
+    private $object_search_model_name;
+    private $object_data_provider;
+
+    private $object_list_title = "Список начислений и выплат";
+    private $object_create_title = "Создать операцию";
+
+    //
+    // UPLOAD
+    //
+    private $upload_table_name;
+    private $upload_model_name;
+    private $upload_model_query;
+    private $upload_search_model_name;
+    private $upload_data_provider;
+
+    /**
+     * Контроллер отвечает за обнолвение всех файлов
+     */
     public function actionIndex()
     {
+
+        $this->object_model_query = "{$this->object_model_name}Query";
+        $this->object_search_model_name = "{$this->object_model_name}Search";
+        $this->object_data_provider = "{$this->object_model_name}DataProvider";
+
+        $this->upload_table_name = "{$this->object_table_name}__upload";
+
+        $this->upload_model_name = "{$this->object_model_name}Upload";
+        $this->upload_model_query = "{$this->upload_model_name}Query";
+        $this->upload_search_model_name = "{$this->upload_model_name}Search";
+        $this->upload_data_provider = "{$this->upload_model_name}DataProvider";
 
         $module_path = Yii::getAlias("@app"."/modules/{$this->module_id}");
 
@@ -72,6 +99,8 @@ class ModuleCreateController extends Controller
 
         $this->object_table_create();
         $this->upload_table_create();
+
+        echo Html::a('Перейти в модуль', ["/{$this->module_id}"], ['']);
 
     }
 
@@ -104,9 +133,9 @@ class ModuleCreateController extends Controller
 
     private function object_table_create(){
 
+        // DROP TABLE IF EXISTS `{$this->object_table_name}`;
         $sql = "
-            DROP TABLE IF EXISTS `{$this->object_table_name}`;
-             CREATE TABLE `{$this->object_table_name}` (
+             CREATE TABLE IF NOT EXISTS `{$this->object_table_name}` (
               `id` int NOT NULL AUTO_INCREMENT PRIMARY KEY,
               `created_at` datetime NULL COMMENT 'Добавлено когда',
               `created_by` int NULL COMMENT 'Добавлено кем',
@@ -118,16 +147,15 @@ class ModuleCreateController extends Controller
             );
         ";
 
-        Yii::$app->db->createCommand($sql);
+        Yii::$app->db->createCommand($sql)->execute();
 
     }
 
     private function upload_table_create(){
 
+        // DROP TABLE IF EXISTS `{$this->upload_table_name}`;
         $sql = "
-        
-            DROP TABLE IF EXISTS `{$this->upload_table_name}`;
-            CREATE TABLE `{$this->upload_table_name}` (
+            CREATE TABLE IF NOT EXISTS `{$this->upload_table_name}` (
                 `id` int(11) NOT NULL AUTO_INCREMENT,
                 `object_id` int(11) DEFAULT NULL COMMENT 'Объект, к которому крепится файл',
                 `team_by` int(11) DEFAULT NULL COMMENT 'Команда',
@@ -149,7 +177,7 @@ class ModuleCreateController extends Controller
         
         ";
 
-        Yii::$app->db->createCommand($sql);
+        Yii::$app->db->createCommand($sql)->execute();
 
     }
 
