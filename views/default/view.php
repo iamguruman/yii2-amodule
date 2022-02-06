@@ -9,13 +9,15 @@ use yii\widgets\DetailView;
 /* @var $uploadSearchModel \app\modules\{_MODULE_ID_}\models\{_UPLOAD_SEARCH_MODEL_} */
 /* @var $uploadDataProvider \yii\data\ActiveDataProvider */
 
-$this->title = $model->name;
+if(aIfModuleControllerAction("{_MODULE_ID_}", "default", "view")){
+    $this->title = $model->name;
 
-$this->params['breadcrumbs'][] = app\modules\{_MODULE_ID_}\Module::getBreadcrumbs();
+    $this->params['breadcrumbs'][] = app\modules\{_MODULE_ID_}\Module::getBreadcrumbs();
 
-$this->params['breadcrumbs'][] = $this->title;
+    $this->params['breadcrumbs'][] = $this->title;
 
-\yii\web\YiiAsset::register($this);
+    \yii\web\YiiAsset::register($this);
+}
 ?>
 <div class="m{_MODULE_ID_}-view">
 
