@@ -51,14 +51,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ])
         ],
 
-        [
+        !empty($uploadDataProvider) ? [
             'label' => "Файлы ({$uploadDataProvider->totalCount})",
             'active' => aGet('tab') == 'files' ? true : null,
             'content' => "<br>".$this->render("../upload/index.php", [
                     'searchModel' => $uploadSearchModel,
                     'dataProvider' => $uploadDataProvider,
                 ]),
-        ],
+        ] : ['visible' => false],
 
 
     ]]) ?>
