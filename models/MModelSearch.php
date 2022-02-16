@@ -70,7 +70,8 @@ class {_OBJECT_SEARCH_MODEL_NAME_} extends {_OBJECT_MODEL_NAME_}
         ]);
         
         //$query->andFilterWhere(['like', 'number', $this->number])
-        //    ->andFilterWhere(['like', 'date', $this->date]);
+        //    ->andFilterWhere(['like', 'date', $this->date])
+        //;
 
         return $dataProvider;
     }
