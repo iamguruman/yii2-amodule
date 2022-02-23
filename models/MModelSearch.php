@@ -66,10 +66,9 @@ class {_OBJECT_SEARCH_MODEL_NAME_} extends {_OBJECT_MODEL_NAME_}
             'updated_by' => $this->updated_by,
             'markdel_at' => $this->markdel_at,
             'markdel_by' => $this->markdel_by,
-            'name' => $this->name,
         ]);
         
-        //$query->andFilterWhere(['like', 'number', $this->number])
+        $query->andFilterWhere(['like', 'name', $this->name]);
         //    ->andFilterWhere(['like', 'date', $this->date])
         //;
 
