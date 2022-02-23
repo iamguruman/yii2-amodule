@@ -65,8 +65,8 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
          
-            'urlTo' => 'Проект',
-            'urlToBlank' => 'Проект',
+            'urlTo' => '{_OBJECT_TITLE_NAME_}',
+            'urlToBlank' => '{_OBJECT_TITLE_NAME_}',
 
             'created_at' => 'Добавлено когда',
 
