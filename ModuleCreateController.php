@@ -57,6 +57,9 @@ class ModuleCreateController extends Controller
     private $object_title_name = "Кассовый чек";
     private $object_list_title = "Список начислений и выплат";
     private $object_create_title = "Создать операцию";
+    
+    private $object_name_label = "Наименование";
+
 
     //
     // UPLOAD
@@ -120,6 +123,8 @@ class ModuleCreateController extends Controller
         $file_content = str_replace("{_OBJECT_DATA_PROVIDER_}", $this->object_data_provider, $file_content);
 
         $file_content = str_replace("{_OBJECT_TITLE_NAME_}", $this->object_title_name, $file_content);
+        $file_content = str_replace("{_OBJECT_NAME_LABEL_}", $this->object_name_label, $file_content);
+        
         $file_content = str_replace("{_OBJECT_CREATE_TITLE_}", $this->object_create_title, $file_content);
         $file_content = str_replace("{_OBJECT_LIST_TITLE_}", $this->object_list_title, $file_content);
 
