@@ -46,7 +46,7 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'string'],
+            [['name'], 'string', 'max' => 255],
 
             [['created_at', 'updated_at', 'markdel_at'], 'safe'],
 
