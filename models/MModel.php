@@ -83,7 +83,7 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
             'markdel_by' => 'Удалено кем',
             'markdelBy.lastNameWithInitials' => 'Удалено кем',
 
-            'name' => 'Наименование',
+            'name' => '{_OBJECT_NAME_LABEL_}',
         ];
     }
 
