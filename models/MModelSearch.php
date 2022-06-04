@@ -71,6 +71,12 @@ class {_OBJECT_SEARCH_MODEL_NAME_} extends {_OBJECT_MODEL_NAME_}
         $query->andFilterWhere(['like', 'name', $this->name]);
         //    ->andFilterWhere(['like', 'date', $this->date])
         //;
+        
+        /*
+        if(!empty($params2['nomcategory_id'])){
+            $query->andWhere(['nomcategory_id' => $params2['nomcategory_id']]);
+        }
+        */
 
         return $dataProvider;
     }
