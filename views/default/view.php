@@ -10,7 +10,7 @@ use yii\widgets\DetailView;
 /* @var $uploadDataProvider \yii\data\ActiveDataProvider */
 
 if(aIfModuleControllerAction("{_MODULE_ID_}", "default", "view")){
-    $this->title = $model->title;
+    $this->title = $model->getTitle();
 
     $this->params['breadcrumbs'][] = app\modules\{_MODULE_ID_}\Module::getBreadcrumbs();
 
