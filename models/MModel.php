@@ -117,7 +117,12 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
 
         $ret = [];
         
-        $ret [] = $this->name;
+        if($this->name)
+            $ret [] = $this->name;
+        
+        if(count($ret) == 0){
+            $ret [] = "Без названия";
+        }
         
         return implode(' ', $ret);
     
