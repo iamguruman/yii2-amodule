@@ -57,10 +57,20 @@ if(aIfModuleControllerAction($module, $controller, $action)){
 
                     $count = count($model->uploads);
 
-                    if($count > 0){
+                    if($count == 1){
+                        
+                        $upload = $model->uploads[0];
+                        return Html::a("<i class='fas fa-paperclip'>{$count}</i>",
+                            FileServerGetLink::http($upload->md5, $upload->ext),
+                            ['data-pjax' => 0]
+                        );
+                        
+                    } elseif($count > 1){
+                        
                         return Html::a("<i class='fas fa-paperclip'>{$count}</i>",
                             ["/{_MODULE_ID_}/default/view", 'id' => $model->id, 'tab' => 'files'],
                             ['data-pjax' => 0]);
+                        
                     }
 
                 }
