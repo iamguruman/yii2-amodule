@@ -29,7 +29,7 @@ use yii\helpers\Html;
  *
  * @property-read {_UPLOAD_MODEL_NAME_}[] $uploads - вложения, см метод getUploads
  *
- * @prorepty-read urlIconToFiles - ссылка-иконка на вложения
+ * @property-read string $urlIconToFiles - ссылка-иконка на вложения
  * 
  */
 class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
