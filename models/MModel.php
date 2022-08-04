@@ -28,6 +28,8 @@ use yii\helpers\Html;
  * @property string $name Наименование
  *
  * @property-read {_UPLOAD_MODEL_NAME_}[] $uploads - вложения, см метод getUploads
+ *
+ * @prorepty-read urlIconToFiles - ссылка-иконка на вложения
  * 
  */
 class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
@@ -124,8 +126,29 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
             $ret [] = "Без названия";
         }
         
-        return implode(' ', $ret);
+        $ret [] = $this->getUrlIconToFiles();
+        
+        return implode('&nbsp;', $ret);
     
+    }
+    
+    public function getUrlIconToFiles(){
+
+        $count = count($this->uploads);
+
+        $ret = [];
+
+        if($count == 0){
+            return;
+        } elseif($count == 1){
+            $ret [] = Html::a("<i class='fas fa-paperclip'>{$count}</i>",
+                FileServerGetLink::http($this->uploads[0]->md5, $this->uploads[0]->ext), ['data-pjax' => 0]);
+        } elseif ($count > 1){
+            $ret [] = Html::a("<i class='fas fa-paperclip'>{$count}</i>",
+                [$this->getUrlView(), 'tab' => 'files'], ['data-pjax' => 0]);
+        } 
+
+        return implode($ret);
     }
 
     public function getUrlToBlank(){
