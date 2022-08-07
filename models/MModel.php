@@ -106,7 +106,7 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
     }
 
     public function getUrlTo($target = null){
-        return Html::a($this->getTitle(),
+        return Html::a(str_replace("&nbsp;", " ", $this->getTitle()),
             $this->getUrlView(),
             ['target' => $target, 'data-pjax' => 0]);
     }
