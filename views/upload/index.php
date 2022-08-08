@@ -63,7 +63,7 @@ if(aIfModuleControllerAction($module, $controller, $action)){
 
                 'download' => function($url, \app\modules\{_MODULE_ID_}\models\{_UPLOAD_MODEL_NAME_} $model, $key){
                     return Html::a("<i class='fas fa-download'></i>",
-                        ["/_uploads/{$model->md5}.{$model->ext}"],
+                        FileServerGetLink::http($model->md5, $model->ext),
                         ['data-pjax' => 0, 'target' => '_blank']);
                 },
 
