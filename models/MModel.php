@@ -102,7 +102,7 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
         if($return == 'array'){
             return $arr;
         } elseif ($return == 'string'){
-            return implode($arr;
+            return implode($arr);
         } else {
             return $arr;
         }
