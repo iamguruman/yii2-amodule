@@ -156,7 +156,7 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
                 FileServerGetLink::http($this->uploads[0]->md5, $this->uploads[0]->ext), ['data-pjax' => 0]);
         } elseif ($count > 1){
             $ret [] = Html::a("<i class='fas fa-paperclip'>{$count}</i>",
-                [$this->getUrlView(), 'tab' => 'files'], ['data-pjax' => 0]);
+                [$this->getUrlView('string'), 'tab' => 'files'], ['data-pjax' => 0]);
         } 
 
         return implode($ret);
