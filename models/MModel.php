@@ -93,7 +93,7 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
      * ссылка на просмотр объекта
      * @return array
      */
-    public function getUrlView($return = 'array'){
+    public function getUrlView($return = 'string'){
         
         $arr = [];
         
@@ -102,7 +102,7 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
         if($return == 'array'){
             return $arr;
         } elseif ($return == 'string'){
-            return implode($arr);
+            return "'/selfpurchase/default/view?id={$this->id}";
         } else {
             return $arr;
         }
