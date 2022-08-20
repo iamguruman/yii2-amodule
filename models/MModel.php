@@ -97,12 +97,12 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
         
         $arr = [];
         
-        $arr [] = ['/selfpurchase/default/view', 'id' => $this->id];
+        $arr [] = ['/{_MODULE_ID_}/default/view', 'id' => $this->id];
         
         if($return == 'array'){
             return $arr;
         } elseif ($return == 'string'){
-            return "'/selfpurchase/default/view?id={$this->id}";
+            return "'/{_MODULE_ID_}/default/view?id={$this->id}";
         } else {
             return $arr;
         }
