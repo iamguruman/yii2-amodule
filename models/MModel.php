@@ -102,7 +102,7 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
         if($return == 'array'){
             return $arr;
         } elseif ($return == 'string'){
-            return "'/{_MODULE_ID_}/default/view?id={$this->id}";
+            return "/{_MODULE_ID_}/default/view?id={$this->id}";
         } else {
             return $arr;
         }
