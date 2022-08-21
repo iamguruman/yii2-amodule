@@ -22,10 +22,10 @@ class Module extends \yii\base\Module
     const moduleTitle = "{_MODULE_TITLE_}";
 
     // удялет из меню со списком всех модулей
-    const removeFromModuleMenu = true;
+    //const removeFromModuleMenu = true;
 
     // удляет из индивидуального меню для модуля
-    const removeFromThisModuleMenu = true;
+    //const removeFromThisModuleMenu = true;
 
     public static function getBreadcrumbs($url = true){
         return [
