@@ -62,7 +62,7 @@ if(aIfModuleControllerAction($module, $controller, $action)){
                         $upload = $model->uploads[0];
                         return Html::a("<i class='fas fa-paperclip'>{$count}</i>",
                             FileServerGetLink::http($upload->md5, $upload->ext),
-                            ['data-pjax' => 0]
+                            ['data-pjax' => 0, 'target' => '_blank']
                         );
                         
                     } elseif($count > 1){
