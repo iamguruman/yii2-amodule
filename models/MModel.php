@@ -139,7 +139,7 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
         
         $ret [] = $this->getUrlIconToFiles();
         
-        return implode('&nbsp;', $ret);
+        return implode(' ', $ret);
     
     }
     
