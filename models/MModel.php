@@ -138,7 +138,7 @@ class {_OBJECT_MODEL_NAME_} extends \yii\db\ActiveRecord
             $ret [] = "Без названия";
         }
         
-        $ret [] = $this->getUrlIconToFiles();
+        //$ret [] = $this->getUrlIconToFiles();
         
         return implode(' ', $ret);
     
