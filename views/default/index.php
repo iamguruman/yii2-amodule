@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+use app\modules\fileserver\components\FileServerGetLink;
 
 /* @var $this yii\web\View */
 /* @var $searchModel app\modules\{_MODULE_ID_}\models\{_OBJECT_SEARCH_MODEL_NAME_} */
