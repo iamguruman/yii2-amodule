@@ -5,6 +5,7 @@ namespace app\modules\{_MODULE_ID_}\models;
 use Yii;
 use app\modules\users\models\User;
 use yii\helpers\Html;
+use app\modules\fileserver\components\FileServerGetLink;
 
 /**
  * This is the model class for table "{_OBJECT_TABLE_NAME_}".
