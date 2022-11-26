@@ -33,23 +33,23 @@ class AmoduleController extends Controller
         ];
     }
 
-    private $module_id = "amodule2";
+    private $module_id = "store_requestion";
 
-    private $module_title = "Номенклатурные категории пользователю";
+    private $module_title = "Запрос со склада на выдачу материальной ценности";
 
     //
     // OBJECT
     //
-    private $object_table_name = "m_test2";
+    private $object_table_name = "m_store_requestion";
 
-    private $object_model_name = "MTest2";
+    private $object_model_name = "MStoreRequestion";
     private $object_model_query;
     private $object_search_model_name;
     private $object_data_provider;
 
-    private $object_title_name = "Категория пользователю";
-    private $object_list_title = "Список связок пользователь + категория";
-    private $object_create_title = "Добавить связку пользователь+категория";
+    private $object_title_name = "Выдача со склада";
+    private $object_list_title = "Список выдач со склада";
+    private $object_create_title = "Создать выдачу со склада";
 
     private $object_name_label = "Наименование";
 
@@ -252,7 +252,8 @@ class AmoduleController extends Controller
     private function downloading_source_from_github()
     {
 
-        $this->aecho("Creatin new module, module name: {$this->module_id}");
+        $mlink = Html::a("open module webpage", "/{$this->module_id}");
+        $this->aecho("Creatin new module, module name: {$this->module_id} ({$mlink})");
 
         $newModulePath = Yii::getAlias("@app")."/modules/".$this->module_id;
 
@@ -288,6 +289,15 @@ class AmoduleController extends Controller
             $this->aecho("Unzip is success to {$newModulePath}/yii2-amodule-main.");
         } else {
             $this->aecho("Error while unzip file. Please check ZipArchive.");
+        }
+
+        $amodulecontrollerphp = "{$newModulePath}/yii2-amodule-main/AmoduleController.php";
+        if(file_exists($amodulecontrollerphp)){
+            if(unlink($amodulecontrollerphp)){
+                $this->aecho("File {$amodulecontrollerphp} is removed");
+            } else {
+                $this->aecho("Error wile deleting file {$amodulecontrollerphp}");
+            }
         }
 
         if($this->movefiles("{$newModulePath}/yii2-amodule-main/", "{$newModulePath}/")){
