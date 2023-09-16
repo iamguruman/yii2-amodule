@@ -28,6 +28,9 @@ use app\modules\fileserver\components\FileServerGetLink;
  *
  * @property string $name Наименование
  *
+ * @property-read $urlTo ссылка на объект
+ * @property-read $urlToBlank ссылка на объект, которая открывается в новом окне
+ *
  * @property-read {_UPLOAD_MODEL_NAME_}[] $uploads - вложения, см метод getUploads
  *
  * @property-read string $urlIconToFiles - ссылка-иконка на вложения
