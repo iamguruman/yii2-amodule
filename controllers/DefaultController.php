@@ -74,6 +74,8 @@ class DefaultController extends Controller
             'object_id' => $model->id
         ]);
         $uploadDataProvider->setSort(['defaultOrder' => ['id' => SORT_DESC]]);
+        
+        {DEFAULT_CONTROLLER_VIEW_ACTION__ITEMS_DATA_PROVIDER}
 
         return $this->render('view', [
 
