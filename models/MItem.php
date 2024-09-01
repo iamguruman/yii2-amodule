@@ -225,7 +225,7 @@ class {_OBJECT_MODEL_NAME_}Item extends \yii\db\ActiveRecord
         return new {_OBJECT_MODEL_NAME_}ItemQuery(get_called_class());
     }
 
-    public function getKizDoc()
+    public function getParentObject()
     {
         return $this->hasOne({_OBJECT_MODEL_NAME_}::className(), ['id' => '{_ITEM_TABLE_PARENT_ID_FIELD_}']);
     }
