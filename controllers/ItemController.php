@@ -97,7 +97,7 @@ class ItemController extends Controller
         $model->created_at = aDateNow();
         $model->created_by = aUserMyId();
 
-        $model->kizdoc_id = aGet('kizdoc_id');
+        $model->{_ITEM_TABLE_PARENT_ID_FIELD_} = aGet('{_ITEM_TABLE_PARENT_ID_FIELD_}');
 
         if ($model->load(Yii::$app->request->post())) {
             if ($model->save()) {
