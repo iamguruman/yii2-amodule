@@ -28,7 +28,7 @@ if(aIfModuleControllerAction($module, $controller, $action)){
     <p>
         <?= aIfModuleControllerAction($module, 'default', 'view') ?
             Html::a('Добавить', ["/{$module}/{$controller}/create",
-                'kizdoc_id' => aGet('id'),
+                '{_ITEM_TABLE_PARENT_ID_FIELD_}' => aGet('id'),
                 'returnto' => $_SERVER['REQUEST_URI']],
                     ['class' => 'btn btn-success'])
             : null  ?>
