@@ -2,6 +2,7 @@
 
 namespace app\modules\{_MODULE_ID_}\controllers;
 
+{DEFAULT_CONTROLLER_USE_ITEM_SEARCH}                       
 use app\modules\{_MODULE_ID_}\models\{_UPLOAD_MODEL_NAME_};
 use app\modules\{_MODULE_ID_}\models\{_UPLOAD_SEARCH_MODEL_};
 use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_};
