@@ -33,23 +33,23 @@ class AmoduleController extends Controller
         ];
     }
 
-    private $module_id = "store_requestion";
+    private $module_id = "kiz_status";
 
-    private $module_title = "Запрос со склада на выдачу материальной ценности";
+    private $module_title = "КИЗ Статус";
 
     //
     // OBJECT
     //
-    private $object_table_name = "m_store_requestion";
+    private $object_table_name = "m_kizstatus";
 
-    private $object_model_name = "MStoreRequestion";
+    private $object_model_name = "MKizStatus";
     private $object_model_query;
     private $object_search_model_name;
     private $object_data_provider;
 
-    private $object_title_name = "Выдача со склада";
-    private $object_list_title = "Список выдач со склада";
-    private $object_create_title = "Создать выдачу со склада";
+    private $object_title_name = "Статус";
+    private $object_list_title = "Список";
+    private $object_create_title = "Добавить";
 
     private $object_name_label = "Наименование";
 
@@ -172,6 +172,11 @@ class AmoduleController extends Controller
         $file_content = str_replace("{_UPLOAD_MODEL_QUERY_}", $this->upload_model_query, $file_content);
         $file_content = str_replace("{_UPLOAD_SEARCH_MODEL_}", $this->upload_search_model_name, $file_content);
         $file_content = str_replace("{_UPLOAD_DATA_PROVIDER_}", $this->upload_data_provider, $file_content);
+
+        $file_content = str_replace("{DEFAULT_CONTROLLER_VIEW_ACTION__ITEMS_DATA_PROVIDER}", "", $file_content);
+        $file_content = str_replace("{DEFAULT_CONTROLLER_USE_ITEM_SEARCH}", "", $file_content);
+        $file_content = str_replace("{VIEW_ACTION_TABS_WIDGET_ITEMS}", "", $file_content);
+        $file_content = str_replace("{DEFAULT_CONTROLLER_VIEW_ACTION__ITEMS_PARAMS}", "", $file_content);
 
         file_put_contents($file_path, $file_content);
 
