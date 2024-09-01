@@ -80,6 +80,8 @@ class DefaultController extends Controller
 
         return $this->render('view', [
 
+            {DEFAULT_CONTROLLER_VIEW_ACTION__ITEMS_PARAMS}
+
             'uploadSearchModel' => $uploadSearchModel,
             'uploadDataProvider' => $uploadDataProvider,
 
