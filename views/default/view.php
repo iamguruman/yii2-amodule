@@ -53,6 +53,8 @@ if(aIfModuleControllerAction("{_MODULE_ID_}", "default", "view")){
             ])
         ],
 
+        {VIEW_ACTION_TABS_WIDGET_ITEMS}
+
         !empty($uploadDataProvider) ? [
             'label' => "Файлы ({$uploadDataProvider->totalCount})",
             'active' => aGet('tab') == 'files' ? true : null,
