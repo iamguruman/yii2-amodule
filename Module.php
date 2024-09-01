@@ -60,7 +60,7 @@ class Module extends \yii\base\Module
     public function init()
     {
 
-        ModuleAccess::check($this->id);
+        //ModuleAccess::check($this->id);
 
         parent::init();
 
