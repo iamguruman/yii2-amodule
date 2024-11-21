@@ -39,14 +39,14 @@ use app\modules\fileserver\components\FileServerGetLink;
  * @property-read {_OBJECT_MODEL_NAME_} $parentObject
  *
  */
-class {_OBJECT_MODEL_NAME_}Item extends \yii\db\ActiveRecord
+class {_OBJECT_ITEM_MODEL_NAME_} extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
      */
     public static function tableName()
     {
-        return '{_OBJECT_TABLE_NAME_}__item';
+        return '{_OBJECT_TABLE_NAME_}__{ITEM_NAME_LOWCASE}';
     }
 
     /**
