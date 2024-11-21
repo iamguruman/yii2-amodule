@@ -33,23 +33,21 @@ class AmoduleWithItemController extends Controller
         ];
     }
 
-    private $create_item_crud = true;
+    private $module_id = "solution";
 
-    private $module_id = "test_crud";
-
-    private $module_title = "Тестовый круд";
+    private $module_title = "Решение";
 
     //
     // OBJECT
     //
-    private $object_table_name = "m_testcrud";
+    private $object_table_name = "m_"."solution";
 
-    private $object_model_name = "MTestCrud";
+    private $object_model_name = "MSolution";
     private $object_model_query;
     private $object_search_model_name;
     private $object_data_provider;
 
-    private $object_title_name = "Документ";
+    private $object_title_name = "Решение";
     private $object_list_title = "Список";
     private $object_create_title = "Добавить";
 
@@ -65,7 +63,11 @@ class AmoduleWithItemController extends Controller
     private $upload_data_provider;
 
     // ITEM
-    private $item_title = "Item name";
+
+    private $create_item_crud = true;
+
+    private $item_item_name = "Product";
+    private $item_title = "Продукт";
     private $item_table_name;
     private $item_model_query;
     private $item_search_model_name;
@@ -83,13 +85,17 @@ class AmoduleWithItemController extends Controller
     public function actionIndex()
     {
 
-        /*shell_exec("rm -rf /var/www/erp3.babiev.com/public_html/modules/test_crud");
-        Yii::$app->db->createCommand("
-            DROP TABLE IF EXISTS `erp`.`m_testcrud`;
-            DROP TABLE IF EXISTS `erp`.`m_testcrud__upload`;
-            DROP TABLE IF EXISTS `erp`.`m_testcrud__item`;
-            DROP TABLE IF EXISTS `erp`.`m_testcrud__item_upload`;
-        ")->execute();
+        /*shell_exec("rm -rf /var/www/erp3.babiev.com/public_html/modules/{$this->module_id}");
+        $this->aecho("shell_exec: rm -rf /var/www/erp3.babiev.com/public_html/modules/{$this->module_id}");
+
+        $sql = "
+            DROP TABLE IF EXISTS `erp`.`{$this->object_table_name}`;
+            DROP TABLE IF EXISTS `erp`.`{$this->object_table_name}__upload`;
+            DROP TABLE IF EXISTS `erp`.`{$this->object_table_name}__item`;
+            DROP TABLE IF EXISTS `erp`.`{$this->object_table_name}__item_upload`;
+        ";
+        Yii::$app->db->createCommand($sql)->execute();
+        $this->aecho($sql);
         ddd();*/
 
         $this->downloading_source_from_github();
@@ -110,15 +116,15 @@ class AmoduleWithItemController extends Controller
 
         if($this->create_item_crud){
 
-            $this->item_table_name = "m_testcrud__item";
+            $this->item_table_name = "m_testcrud__item"; //todo ??????
 
-            $this->item_model_query = "{$this->object_model_name}ItemQuery";
-            $this->item_search_model_name = "{$this->object_model_name}ItemSearch";
-            $this->item_data_provider = "{$this->object_model_name}ItemDataProvider";
+            $this->item_model_query = "{$this->object_model_name}{$this->item_item_name}Query";
+            $this->item_search_model_name = "{$this->object_model_name}{$this->item_item_name}Search";
+            $this->item_data_provider = "{$this->object_model_name}{$this->item_item_name}DataProvider";
 
             $this->item_upload_table_name = "{$this->item_table_name}_upload";
 
-            $this->item_upload_model_name = "{$this->object_model_name}ItemUpload";
+            $this->item_upload_model_name = "{$this->object_model_name}{$this->item_item_name}Upload";
             $this->item_upload_model_query = "{$this->item_upload_model_name}Query";
             $this->item_upload_search_model_name = "{$this->item_upload_model_name}Search";
             $this->item_upload_data_provider = "{$this->item_upload_model_name}DataProvider";
@@ -140,13 +146,42 @@ class AmoduleWithItemController extends Controller
         $this->rename_file("{$module_path}/models/MUploadSearch.php", "{$module_path}/models/{$this->upload_search_model_name}.php");
         $this->rename_file("{$module_path}/models/MUploadSearch.php", "{$module_path}/models/{$this->upload_search_model_name}.php");
 
-        $this->rename_file("{$module_path}/models/MItem.php", "{$module_path}/models/{$this->object_model_name}Item.php");
-        $this->rename_file("{$module_path}/models/MItemQuery.php", "{$module_path}/models/{$this->object_model_name}ItemQuery.php");
-        $this->rename_file("{$module_path}/models/MItemSearch.php", "{$module_path}/models/{$this->object_model_name}ItemSearch.php");
+        if($this->create_item_crud){
+            $this->rename_file("{$module_path}/models/MItem.php", "{$module_path}/models/{$this->object_model_name}Item.php");
+            $this->rename_file("{$module_path}/models/MItemQuery.php", "{$module_path}/models/{$this->object_model_name}{$this->item_item_name}Query.php");
+            $this->rename_file("{$module_path}/models/MItemSearch.php", "{$module_path}/models/{$this->object_model_name}{$this->item_item_name}Search.php");
 
-        $this->rename_file("{$module_path}/models/MItemUpload.php", "{$module_path}/models/{$this->object_model_name}ItemUpload.php");
-        $this->rename_file("{$module_path}/models/MItemUploadQuery.php", "{$module_path}/models/{$this->object_model_name}ItemUploadQuery.php");
-        $this->rename_file("{$module_path}/models/MItemUploadSearch.php", "{$module_path}/models/{$this->object_model_name}ItemUploadSearch.php");
+            $this->rename_file("{$module_path}/models/MItemUpload.php", "{$module_path}/models/{$this->object_model_name}{$this->item_item_name}Upload.php");
+            $this->rename_file("{$module_path}/models/MItemUploadQuery.php", "{$module_path}/models/{$this->object_model_name}{$this->item_item_name}UploadQuery.php");
+            $this->rename_file("{$module_path}/models/MItemUploadSearch.php", "{$module_path}/models/{$this->object_model_name}{$this->item_item_name}UploadSearch.php");
+        } else {
+            unlink("{$module_path}/controllers/ItemController.php");
+            unlink("{$module_path}/controllers/ItemUploadController.php");
+
+            unlink("{$module_path}/models/MItem.php");
+            unlink("{$module_path}/models/MItemQuery.php");
+            unlink("{$module_path}/models/MItemSearch.php");
+
+            unlink("{$module_path}/models/MItemUpload.php");
+            unlink("{$module_path}/models/MItemUploadQuery.php");
+            unlink("{$module_path}/models/MItemUploadSearch.php");
+
+            unlink("{$module_path}/views/item/create.php");
+            unlink("{$module_path}/views/item/_form.php");
+            unlink("{$module_path}/views/item/index.php");
+            unlink("{$module_path}/views/item/_search.php");
+            unlink("{$module_path}/views/item/update.php");
+            unlink("{$module_path}/views/item/view.php");
+            rmdir("{$module_path}/views/item");
+
+            unlink("{$module_path}/views/item-upload/create.php");
+            unlink("{$module_path}/views/item-upload/_form.php");
+            unlink("{$module_path}/views/item-upload/index.php");
+            unlink("{$module_path}/views/item-upload/_search.php");
+            unlink("{$module_path}/views/item-upload/update.php");
+            unlink("{$module_path}/views/item-upload/view.php");
+            rmdir("{$module_path}/views/item-upload");
+        }
 
         $this->object_table_create();
         $this->upload_table_create();
@@ -227,10 +262,14 @@ class AmoduleWithItemController extends Controller
 
         $file_content = str_replace("{_ITEM_TABLE_PARENT_ID_FIELD_}", $this->item_table__path_to_parent_id_field, $file_content);
 
+        $file_content = str_replace("{_OBJECT_ITEM_MODEL_NAME_}", "{$this->object_model_name}{$this->item_item_name}", $file_content);
+        $file_content = str_replace("{ITEM_NAME_LOWCASE}", "{$this->item_item_name}", $file_content);
+        $file_content = str_replace("{ITEM_NAME}", "{$this->item_item_name}", $file_content);
+
         $file_content = str_replace("{ITEM_TITLE}", $this->item_title, $file_content);
 
         if($this->create_item_crud){
-            $file_content = str_replace("{DEFAULT_CONTROLLER_USE_ITEM_SEARCH}", 'use app\modules\test_crud\models\\'.$this->object_model_name.'ItemSearch;', $file_content);
+            $file_content = str_replace("{DEFAULT_CONTROLLER_USE_ITEM_SEARCH}", 'use app\modules\\'.$this->module_id.'\models\\'.$this->object_model_name.'ItemSearch;', $file_content);
         } else {
             $file_content = str_replace("{DEFAULT_CONTROLLER_USE_ITEM_SEARCH}", "", $file_content);
         }
@@ -381,6 +420,15 @@ class AmoduleWithItemController extends Controller
             }
         }
 
+        $amodulecontrollerphp = "{$newModulePath}/yii2-amodule-main/AmoduleWithItemController.php";
+        if(file_exists($amodulecontrollerphp)){
+            if(unlink($amodulecontrollerphp)){
+                $this->aecho("File {$amodulecontrollerphp} is removed");
+            } else {
+                $this->aecho("Error wile deleting file {$amodulecontrollerphp}");
+            }
+        }
+
         if($this->movefiles("{$newModulePath}/yii2-amodule-main/", "{$newModulePath}/")){
             $this->aecho("Files from {$newModulePath}/yii2-amodule-main} are moved to {$newModulePath}");
         } else {
@@ -445,6 +493,10 @@ $ret = '        $itemSearchModel = new {_OBJECT_MODEL_NAME_}ItemSearch();
 
     private function viewActionTabsWidgetItemsParams()
     {
+        if(!$this->create_item_crud){
+            return null;
+        }
+
         $ret = '"itemSearchModel" => $itemSearchModel,
             "itemDataProvider" => $itemDataProvider,';
 
