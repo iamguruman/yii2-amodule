@@ -2,9 +2,9 @@
 
 namespace app\modules\{_MODULE_ID_}\controllers;
 
-use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}Item;
-use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}ItemSearch;
-use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}ItemUploadSearch;
+use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME};
+use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}Search;
+use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}UploadSearch;
 use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_};
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -13,7 +13,7 @@ use yii\filters\VerbFilter;
 use Yii;
 
 /**
- * DefaultController implements the CRUD actions for {_OBJECT_MODEL_NAME_}Item model.
+ * DefaultController implements the CRUD actions for {_OBJECT_MODEL_NAME_}{ITEM_NAME} model.
  */
 class ItemController extends Controller
 {
@@ -43,12 +43,12 @@ class ItemController extends Controller
 
 
     /**
-     * Lists all {_OBJECT_MODEL_NAME_}Item models.
+     * Lists all {_OBJECT_MODEL_NAME_}{ITEM_NAME} models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new {_OBJECT_MODEL_NAME_}ItemSearch();
+        $searchModel = new {_OBJECT_MODEL_NAME_}{ITEM_NAME}Search();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->setSort(['defaultOrder' => ['name' => SORT_ASC]]);
 
@@ -59,7 +59,7 @@ class ItemController extends Controller
     }
 
     /**
-     * Displays a single {_OBJECT_MODEL_NAME_}Item model.
+     * Displays a single {_OBJECT_MODEL_NAME_}{ITEM_NAME} model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -69,7 +69,7 @@ class ItemController extends Controller
 
         $model =  $this->findModel($id);
 
-        $uploadSearchModel = new {_OBJECT_MODEL_NAME_}ItemUploadSearch();
+        $uploadSearchModel = new {_OBJECT_MODEL_NAME_}{ITEM_NAME}UploadSearch();
         $uploadDataProvider = $uploadSearchModel->search(Yii::$app->request->queryParams, [
             'object_id' => $model->id
         ]);
@@ -86,13 +86,13 @@ class ItemController extends Controller
     }
 
     /**
-     * Creates a new {_OBJECT_MODEL_NAME_}Item model.
+     * Creates a new {_OBJECT_MODEL_NAME_}{ITEM_NAME} model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new {_OBJECT_MODEL_NAME_}Item();
+        $model = new {_OBJECT_MODEL_NAME_}{ITEM_NAME}();
 
         $model->created_at = aDateNow();
         $model->created_by = aUserMyId();
@@ -112,7 +112,7 @@ class ItemController extends Controller
     }
 
     /**
-     * Updates an existing {_OBJECT_MODEL_NAME_}Item model.
+     * Updates an existing {_OBJECT_MODEL_NAME_}{ITEM_NAME} model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -138,7 +138,7 @@ class ItemController extends Controller
     }
 
     /**
-     * Deletes an existing {_OBJECT_MODEL_NAME_}Item model.
+     * Deletes an existing {_OBJECT_MODEL_NAME_}{ITEM_NAME} model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -154,15 +154,15 @@ class ItemController extends Controller
     }
 
     /**
-     * Finds the {_OBJECT_MODEL_NAME_}Item model based on its primary key value.
+     * Finds the {_OBJECT_MODEL_NAME_}{ITEM_NAME} model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return {_OBJECT_MODEL_NAME_}Item the loaded model
+     * @return {_OBJECT_MODEL_NAME_}{ITEM_NAME} the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = {_OBJECT_MODEL_NAME_}Item::findOne($id)) !== null) {
+        if (($model = {_OBJECT_MODEL_NAME_}{ITEM_NAME}::findOne($id)) !== null) {
             return $model;
         }
 
