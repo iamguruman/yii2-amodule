@@ -6,7 +6,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}ItemUploadSearch */
+/* @var $searchModel app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}UploadSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $module = app\modules\{_MODULE_ID_}\Module::moduleId;
@@ -20,15 +20,15 @@ if(aIfModuleControllerAction($module, $controller, $action)){
 }
 
 ?>
-<div class="{_MODULE_ID_}-item-upload-index">
+<div class="{_MODULE_ID_}-{ITEM_NAME_LOWCASE}-upload-index">
 
     <?= aHtmlHeader($this->title, $module, $controller, $action) ?>
 
     <p>
 
-        <?= aIfModuleControllerAction($module, 'item', 'view') ?
+        <?= aIfModuleControllerAction($module, '{ITEM_NAME_LOWCASE}', 'view') ?
             Html::a('Добавить',
-                ["/{$module}/item-upload/create",
+                ["/{$module}/{ITEM_NAME_LOWCASE}-upload/create",
                     'object' => aGet('id'),
                     'returnto' => urlencode($_SERVER['REQUEST_URI']."&tab=files"),
                 ],
@@ -62,14 +62,14 @@ if(aIfModuleControllerAction($module, $controller, $action)){
 
             ['class' => 'yii\grid\ActionColumn', 'template' => '{download} {view}', 'buttons' => [
 
-                'download' => function($url, \app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}ItemUpload $model, $key){
+                'download' => function($url, \app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload $model, $key){
                     return Html::a("<i class='fas fa-download'></i>",
                         FileServerGetLink::http($model->md5, $model->ext),
                         ['data-pjax' => 0, 'target' => '_blank']);
                 },
 
-                'view' => function($url, \app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}ItemUpload $model, $key){
-                    return Html::a("<i class='fas fa-eye'></i>", ['/{_MODULE_ID_}/item-upload/view', 'id' => $model->id], ['data-pjax' => 0]);
+                'view' => function($url, \app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload $model, $key){
+                    return Html::a("<i class='fas fa-eye'></i>", ['/{_MODULE_ID_}/{ITEM_NAME_LOWCASE}-upload/view', 'id' => $model->id], ['data-pjax' => 0]);
                 },
 
             ]],
