@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}ItemUpload */
+/* @var $model app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload */
 
 $module = app\modules\{_MODULE_ID_}\Module::moduleId;
 
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="{_MODULE_ID_}-item-upload-view">
+<div class="{_MODULE_ID_}-{ITEM_NAME_LOWCASE}-upload-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
