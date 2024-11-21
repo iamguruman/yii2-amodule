@@ -91,7 +91,7 @@ class AmoduleWithItemController extends Controller
         $sql = "
             DROP TABLE IF EXISTS `erp`.`{$this->object_table_name}`;
             DROP TABLE IF EXISTS `erp`.`{$this->object_table_name}__upload`;
-            DROP TABLE IF EXISTS `erp`.`{$this->object_table_name}__item`;
+            DROP TABLE IF EXISTS `erp`.`{$this->object_table_name}__{}`;
             DROP TABLE IF EXISTS `erp`.`{$this->object_table_name}__item_upload`;
         ";
         Yii::$app->db->createCommand($sql)->execute();
@@ -147,13 +147,17 @@ class AmoduleWithItemController extends Controller
         $this->rename_file("{$module_path}/models/MUploadSearch.php", "{$module_path}/models/{$this->upload_search_model_name}.php");
 
         if($this->create_item_crud){
-            $this->rename_file("{$module_path}/models/MItem.php", "{$module_path}/models/{$this->object_model_name}Item.php");
+            $this->rename_file("{$module_path}/models/MItem.php", "{$module_path}/models/{$this->object_model_name}{$this->item_item_name}.php");
             $this->rename_file("{$module_path}/models/MItemQuery.php", "{$module_path}/models/{$this->object_model_name}{$this->item_item_name}Query.php");
             $this->rename_file("{$module_path}/models/MItemSearch.php", "{$module_path}/models/{$this->object_model_name}{$this->item_item_name}Search.php");
 
             $this->rename_file("{$module_path}/models/MItemUpload.php", "{$module_path}/models/{$this->object_model_name}{$this->item_item_name}Upload.php");
             $this->rename_file("{$module_path}/models/MItemUploadQuery.php", "{$module_path}/models/{$this->object_model_name}{$this->item_item_name}UploadQuery.php");
             $this->rename_file("{$module_path}/models/MItemUploadSearch.php", "{$module_path}/models/{$this->object_model_name}{$this->item_item_name}UploadSearch.php");
+
+            $this->rename_file("{$module_path}/controllers/ItemController.php", "{$module_path}/controllers/{$this->item_item_name}Controller.php");
+            $this->rename_file("{$module_path}/controllers/ItemUploadController.php", "{$module_path}/controllers/{$this->item_item_name}UploadController.php");
+
         } else {
             unlink("{$module_path}/controllers/ItemController.php");
             unlink("{$module_path}/controllers/ItemUploadController.php");
@@ -263,8 +267,8 @@ class AmoduleWithItemController extends Controller
         $file_content = str_replace("{_ITEM_TABLE_PARENT_ID_FIELD_}", $this->item_table__path_to_parent_id_field, $file_content);
 
         $file_content = str_replace("{_OBJECT_ITEM_MODEL_NAME_}", "{$this->object_model_name}{$this->item_item_name}", $file_content);
-        $file_content = str_replace("{ITEM_NAME_LOWCASE}", "{$this->item_item_name}", $file_content);
-        $file_content = str_replace("{ITEM_NAME}", "{$this->item_item_name}", $file_content);
+        $file_content = str_replace("{ITEM_NAME_LOWCASE}", mb_strtolower($this->item_item_name), $file_content);
+        $file_content = str_replace("{ITEM_NAME}", $this->item_item_name, $file_content);
 
         $file_content = str_replace("{ITEM_TITLE}", $this->item_title, $file_content);
 
@@ -447,12 +451,12 @@ class AmoduleWithItemController extends Controller
 
     private function item_table_create()
     {
-        $sql = $this->sql_object_table("{$this->object_table_name}__item", $this->item_table__path_to_parent_id_field);
+        $sql = $this->sql_object_table("{$this->object_table_name}__".mb_strtolower($this->item_item_name), $this->item_table__path_to_parent_id_field);
         Yii::$app->db->createCommand($sql)->execute();
     }
     private function item_upload_table_create()
     {
-        $sql = $this->sql_upload_table("{$this->object_table_name}__item_upload");
+        $sql = $this->sql_upload_table("{$this->object_table_name}__".mb_strtolower($this->item_item_name)."_upload");
         Yii::$app->db->createCommand($sql)->execute();
     }
 
