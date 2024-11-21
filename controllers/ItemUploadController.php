@@ -13,9 +13,9 @@ use yii\web\UploadedFile;
 use Yii;
 
 /**
- * ItemUploadController implements the CRUD actions for {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload model.
+ * {ITEM_NAME}UploadController implements the CRUD actions for {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload model.
  */
-class ItemUploadController extends Controller
+class {ITEM_NAME}UploadController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -159,7 +159,7 @@ class ItemUploadController extends Controller
 
         if ($model->load(Yii::$app->request->post())){
             if($model->save()) {
-                return $this->redirect(['/{_MODULE_ID_}/item/view', 'id' => $model->object_id, 'tab' => 'files']);
+                return $this->redirect(['/{_MODULE_ID_}/{ITEM_NAME_LOWCASE}/view', 'id' => $model->object_id, 'tab' => 'files']);
             }
         }
 
@@ -180,8 +180,8 @@ class ItemUploadController extends Controller
         $model = $this->findModel($id);
 
         return aControllerActionMarkdel($this, $model,
-            ['/{_MODULE_ID_}/item/view', 'id' => $model->object_id, 'tab' => 'files'],
-            ['/{_MODULE_ID_}/item/view', 'id' => $model->object_id, 'tab' => 'files']
+            ['/{_MODULE_ID_}/{ITEM_NAME_LOWCASE}/view', 'id' => $model->object_id, 'tab' => 'files'],
+            ['/{_MODULE_ID_}/{ITEM_NAME_LOWCASE}/view', 'id' => $model->object_id, 'tab' => 'files']
         );
     }
 
