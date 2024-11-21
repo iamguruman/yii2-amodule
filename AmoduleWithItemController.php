@@ -280,7 +280,7 @@ class AmoduleWithItemController extends Controller
 
         $file_content = str_replace("        {DEFAULT_CONTROLLER_VIEW_ACTION__ITEMS_DATA_PROVIDER}", $this->itemSearcModelAndDataProviderForDefaultController(), $file_content);
         $file_content = str_replace("        {VIEW_ACTION_TABS_WIDGET_ITEMS}", $this->viewActionTabsWidgetItems(), $file_content);
-        $file_content = str_replace("{DEFAULT_CONTROLLER_VIEW_ACTION__ITEMS_PARAMS}", $this->viewActionTabsWidgetItemsParams(), $file_content); 
+        $file_content = str_replace("{DEFAULT_CONTROLLER_VIEW_ACTION__ITEMS_PARAMS}", $this->viewActionTabsWidgetItemsParams(), $file_content);
 
         file_put_contents($file_path, $file_content);
 
