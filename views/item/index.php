@@ -6,11 +6,11 @@ use yii\widgets\Pjax;
 use app\modules\fileserver\components\FileServerGetLink;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}ItemSearch */
+/* @var $searchModel app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}Search */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $module = app\modules\{_MODULE_ID_}\Module::moduleId;
-$controller = "item";
+$controller = "{ITEM_NAME_LOWCASE}";
 $action = "index";
 
 if(aIfModuleControllerAction($module, $controller, $action)){
@@ -21,7 +21,7 @@ if(aIfModuleControllerAction($module, $controller, $action)){
 }
 
 ?>
-<div class="{_MODULE_ID_}-item-index">
+<div class="{_MODULE_ID_}-{ITEM_NAME_LOWCASE}-index">
 
     <?= aHtmlHeader($this->title, $module, $controller, $action) ?>
 
@@ -57,11 +57,11 @@ if(aIfModuleControllerAction($module, $controller, $action)){
             'name',
 
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {files}', 'buttons' => [
-                'view' => function($url, \app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}Item $model, $key){
+                'view' => function($url, \app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME} $model, $key){
                     return aGridViewActionColumnViewButton($model, $model->getUrlView());
                 },
 
-                'files' => function($url, \app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}Item $model, $key){
+                'files' => function($url, \app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME} $model, $key){
 
                     $count = count($model->uploads);
 
@@ -76,7 +76,7 @@ if(aIfModuleControllerAction($module, $controller, $action)){
                     } elseif($count > 1){
                         
                         return Html::a("<i class='fas fa-paperclip'>{$count}</i>",
-                            ["/{_MODULE_ID_}/item/view", 'id' => $model->id, 'tab' => 'files'],
+                            ["/{_MODULE_ID_}/{ITEM_NAME_LOWCASE}/view", 'id' => $model->id, 'tab' => 'files'],
                             ['data-pjax' => 0]);
                         
                     }
