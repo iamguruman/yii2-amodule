@@ -7,6 +7,7 @@ use app\modules\{_MODULE_ID_}\models\{_UPLOAD_MODEL_NAME_};
 use app\modules\{_MODULE_ID_}\models\{_UPLOAD_SEARCH_MODEL_};
 use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_};
 use app\modules\{_MODULE_ID_}\models\{_OBJECT_SEARCH_MODEL_NAME_};
+use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}Search;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
