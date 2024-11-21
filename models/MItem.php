@@ -39,7 +39,7 @@ use app\modules\fileserver\components\FileServerGetLink;
  * @property-read {_OBJECT_MODEL_NAME_} $parentObject
  *
  */
-class {_OBJECT_ITEM_MODEL_NAME_}{ITEM_NAME} extends \yii\db\ActiveRecord
+class {_OBJECT_ITEM_MODEL_NAME_} extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}
