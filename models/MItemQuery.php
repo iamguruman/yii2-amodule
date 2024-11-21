@@ -3,11 +3,11 @@
 namespace app\modules\{_MODULE_ID_}\models;
 
 /**
- * This is the ActiveQuery class for {_OBJECT_MODEL_NAME_}Item.
+ * This is the ActiveQuery class for {_OBJECT_MODEL_NAME_}{ITEM_NAME}.
  *
- * @see {_OBJECT_MODEL_NAME_}Item
+ * @see {_OBJECT_MODEL_NAME_}{ITEM_NAME}
  */
-class {_OBJECT_MODEL_NAME_}ItemQuery extends \yii\db\ActiveQuery
+class {_OBJECT_MODEL_NAME_}{ITEM_NAME}Query extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
