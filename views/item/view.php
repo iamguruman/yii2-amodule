@@ -4,12 +4,12 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}Item */
+/* @var $model app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME} */
 
-/* @var $uploadSearchModel \app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}ItemUploadSearch */
+/* @var $uploadSearchModel \app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}UploadSearch */
 /* @var $uploadDataProvider \yii\data\ActiveDataProvider */
 
-if(aIfModuleControllerAction("{_MODULE_ID_}", "item", "view")){
+if(aIfModuleControllerAction("{_MODULE_ID_}", "{ITEM_NAME_LOWCASE}", "view")){
     $this->title = $model->getTitle();
 
     $this->params['breadcrumbs'][] = app\modules\{_MODULE_ID_}\Module::getBreadcrumbs();
@@ -23,7 +23,7 @@ if(aIfModuleControllerAction("{_MODULE_ID_}", "item", "view")){
     \yii\web\YiiAsset::register($this);
 }
 ?>
-<div class="{_MODULE_ID_}-item-view">
+<div class="{_MODULE_ID_}-{ITEM_NAME_LOWCASE}-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -60,7 +60,7 @@ if(aIfModuleControllerAction("{_MODULE_ID_}", "item", "view")){
         !empty($uploadDataProvider) ? [
             'label' => "Файлы ({$uploadDataProvider->totalCount})",
             'active' => aGet('tab') == 'files' ? true : null,
-            'content' => "<br>".$this->render("../item-upload/index.php", [
+            'content' => "<br>".$this->render("../{ITEM_NAME_LOWCASE}-upload/index.php", [
                     'searchModel' => $uploadSearchModel,
                     'dataProvider' => $uploadDataProvider,
                 ]),
