@@ -7,7 +7,7 @@ use app\modules\users\models\User;
 use app\modules\teams\models\Team;
 
 /**
- * This is the model class for table "{_OBJECT_MODEL_NAME_}ItemUpload".
+ * This is the model class for table "{_OBJECT_MODEL_NAME_}{ITEM_NAME_LOWCASE}Upload".
  *
  * @property int $id
  *
