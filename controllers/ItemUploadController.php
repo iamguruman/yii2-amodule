@@ -2,8 +2,8 @@
 
 namespace app\modules\{_MODULE_ID_}\controllers;
 
-use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}Item;
-use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}ItemUpload;
+use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME};
+use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload;
 use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}UploadSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -13,7 +13,7 @@ use yii\web\UploadedFile;
 use Yii;
 
 /**
- * ItemUploadController implements the CRUD actions for {_OBJECT_MODEL_NAME_}ItemUpload model.
+ * ItemUploadController implements the CRUD actions for {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload model.
  */
 class ItemUploadController extends Controller
 {
@@ -42,12 +42,12 @@ class ItemUploadController extends Controller
     }
 
     /**
-     * Lists all {_OBJECT_MODEL_NAME_}ItemUpload models.
+     * Lists all {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new {_OBJECT_MODEL_NAME_}ItemUploadSearch();
+        $searchModel = new {_OBJECT_MODEL_NAME_}{ITEM_NAME}UploadSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
         $dataProvider->setSort(['defaultOrder' => ['id' => SORT_DESC]]);
 
@@ -58,7 +58,7 @@ class ItemUploadController extends Controller
     }
 
     /**
-     * Displays a single {_OBJECT_MODEL_NAME_}ItemUpload model.
+     * Displays a single {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -73,19 +73,19 @@ class ItemUploadController extends Controller
     }
 
     /**
-     * Creates a new {_OBJECT_MODEL_NAME_}ItemUpload model.
+     * Creates a new {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new {_OBJECT_MODEL_NAME_}ItemUpload();
+        $model = new {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload();
 
         $model->team_by = aTeamDefaultId();
         $model->created_at = aDateNow();
         $model->created_by = aUserMyId();
 
-        if($object = {_OBJECT_MODEL_NAME_}Item::findOne(aGet('object'))){
+        if($object = {_OBJECT_MODEL_NAME_}{ITEM_NAME}::findOne(aGet('object'))){
             $model->object_id = $object->id;
         }
 
@@ -110,9 +110,9 @@ class ItemUploadController extends Controller
                     $uploadedFile->saveAs($filePath);
                 }
 
-                if({_OBJECT_MODEL_NAME_}ItemUpload::find()->andWhere(['md5' => $md5, 'object_id' => $object->id])->count() == 0){
+                if({_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload::find()->andWhere(['md5' => $md5, 'object_id' => $object->id])->count() == 0){
 
-                    $uploadModel = new {_OBJECT_MODEL_NAME_}ItemUpload();  // поменять название модели
+                    $uploadModel = new {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload();  // поменять название модели
                     $uploadModel->object_id = $object->id;
 
                     $uploadModel->team_by = aTeamDefaultId();
@@ -147,7 +147,7 @@ class ItemUploadController extends Controller
     }
 
     /**
-     * Updates an existing {_OBJECT_MODEL_NAME_}ItemUpload model.
+     * Updates an existing {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -169,7 +169,7 @@ class ItemUploadController extends Controller
     }
 
     /**
-     * Deletes an existing {_OBJECT_MODEL_NAME_}ItemUpload model.
+     * Deletes an existing {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -186,15 +186,15 @@ class ItemUploadController extends Controller
     }
 
     /**
-     * Finds the {_OBJECT_MODEL_NAME_}ItemUpload model based on its primary key value.
+     * Finds the {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return {_OBJECT_MODEL_NAME_}ItemUpload the loaded model
+     * @return {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = {_OBJECT_MODEL_NAME_}ItemUpload::findOne($id)) !== null) {
+        if (($model = {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload::findOne($id)) !== null) {
             return $model;
         }
 
