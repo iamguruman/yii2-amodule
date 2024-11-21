@@ -3,11 +3,11 @@
 namespace app\modules\{_MODULE_ID_}\models;
 
 /**
- * This is the ActiveQuery class for {_OBJECT_MODEL_NAME_}ItemUpload.
+ * This is the ActiveQuery class for {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload.
  *
- * @see {_OBJECT_MODEL_NAME_}ItemUpload
+ * @see {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload
  */
-class {_OBJECT_MODEL_NAME_}ItemUploadQuery extends \yii\db\ActiveQuery
+class {_OBJECT_MODEL_NAME_}{ITEM_NAME}UploadQuery extends \yii\db\ActiveQuery
 {
     /*public function active()
     {
@@ -19,13 +19,13 @@ class {_OBJECT_MODEL_NAME_}ItemUploadQuery extends \yii\db\ActiveQuery
         parent::init();
 
         if(aIfHideMarkdel()){
-            $this->andWhere([{_OBJECT_MODEL_NAME_}ItemUpload::tableName().'.markdel_by' => null]);
+            $this->andWhere([{_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload::tableName().'.markdel_by' => null]);
         }
     }
 
     /**
      * {@inheritdoc}
-     * @return {_OBJECT_MODEL_NAME_}ItemUpload[]|array
+     * @return {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload[]|array
      */
     public function all($db = null)
     {
@@ -34,7 +34,7 @@ class {_OBJECT_MODEL_NAME_}ItemUploadQuery extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return {_OBJECT_MODEL_NAME_}ItemUpload|array|null
+     * @return {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload|array|null
      */
     public function one($db = null)
     {
