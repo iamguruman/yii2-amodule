@@ -462,13 +462,15 @@ class AmoduleWithItemController extends Controller
 
     private function itemSearcModelAndDataProviderForDefaultController()
     {
-$ret = '        $itemSearchModel = new {_OBJECT_MODEL_NAME_}ItemSearch();
-        $itemDataProvider = $itemSearchModel->search(Yii::$app->request->queryParams, [
+$ret = '        ${ITEM_NAME_LOWCASE}SearchModel = new {_OBJECT_MODEL_NAME_}{ITEM_NAME}Search();
+        ${ITEM_NAME_LOWCASE}DataProvider = ${ITEM_NAME_LOWCASE}SearchModel->search(Yii::$app->request->queryParams, [
             "{_ITEM_TABLE_PARENT_ID_FIELD_}" => $model->id
         ]);
         $itemDataProvider->setSort(["defaultOrder" => ["id" => SORT_DESC]]);
 ';
 
+        $ret = str_replace("{ITEM_NAME}", $this->item_item_name, $ret);
+        $ret = str_replace("{ITEM_NAME_LOWCASE}", mb_strtolower($this->item_item_name), $ret);
         $ret = str_replace("{_OBJECT_MODEL_NAME_}", $this->object_model_name, $ret);
         $ret = str_replace("{_ITEM_TABLE_PARENT_ID_FIELD_}", $this->item_table__path_to_parent_id_field, $ret);
 
@@ -481,15 +483,16 @@ $ret = '        $itemSearchModel = new {_OBJECT_MODEL_NAME_}ItemSearch();
 
     private function viewActionTabsWidgetItems()
     {
-        $ret = '        !empty($itemDataProvider) ? [
-            "label" => "{ITEM_TITLE} ({$itemDataProvider->totalCount})",
+        $ret = '        !empty(${ITEM_NAME_LOWCASE}DataProvider) ? [
+            "label" => "{ITEM_TITLE} ({${ITEM_NAME_LOWCASE}DataProvider->totalCount})",
             //"active" => aGet("tab") == "?????" ? true : null,
-            "content" => "<br>".$this->render("../item/index.php", [
-                    "searchModel" => $itemSearchModel,
-                    "dataProvider" => $itemDataProvider,
+            "content" => "<br>".$this->render("../{ITEM_NAME_LOWCASE}/index.php", [
+                    "searchModel" => ${ITEM_NAME_LOWCASE}SearchModel,
+                    "dataProvider" => ${ITEM_NAME_LOWCASE}DataProvider,
                 ]),
         ] : ["visible" => false],';
 
+        $ret = str_replace("{ITEM_NAME_LOWCASE}", mb_strtolower($this->item_item_name), $ret);
         $ret = str_replace("{ITEM_TITLE}", $this->item_title, $ret);
 
         return $ret;
@@ -501,8 +504,10 @@ $ret = '        $itemSearchModel = new {_OBJECT_MODEL_NAME_}ItemSearch();
             return null;
         }
 
-        $ret = '"itemSearchModel" => $itemSearchModel,
-            "itemDataProvider" => $itemDataProvider,';
+        $ret = '"{ITEM_NAME_LOWCASE}SearchModel" => ${ITEM_NAME_LOWCASE}SearchModel,
+            "{ITEM_NAME_LOWCASE}DataProvider" => ${ITEM_NAME_LOWCASE}DataProvider,';
+
+        $ret = str_replace("{ITEM_NAME_LOWCASE}", mb_strtolower($this->item_item_name), $ret);
 
         return $ret;
     }
