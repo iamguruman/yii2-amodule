@@ -80,7 +80,7 @@ class ApiController extends \yii\web\Controller
         ]);
         $dataProvider->pagination = false;
 
-        /** @var Nomenclature[] $models */
+        /** @var {_OBJECT_MODEL_NAME_}[] $models */
         $models = $dataProvider->getModels();
 
         $return = [];
