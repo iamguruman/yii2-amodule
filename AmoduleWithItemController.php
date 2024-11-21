@@ -158,6 +158,22 @@ class AmoduleWithItemController extends Controller
             $this->rename_file("{$module_path}/controllers/ItemController.php", "{$module_path}/controllers/{$this->item_item_name}Controller.php");
             $this->rename_file("{$module_path}/controllers/ItemUploadController.php", "{$module_path}/controllers/{$this->item_item_name}UploadController.php");
 
+            mkdir("{$module_path}/views/".mb_strtolower($this->item_item_name));
+            $this->rename_file("{$module_path}/views/item/create.php", "{$module_path}/views/".mb_strtolower($this->item_item_name)."/create.php");
+            $this->rename_file("{$module_path}/views/item/_form.php", "{$module_path}/views/".mb_strtolower($this->item_item_name)."/_form.php");
+            $this->rename_file("{$module_path}/views/item/index.php", "{$module_path}/views/".mb_strtolower($this->item_item_name)."/index.php");
+            $this->rename_file("{$module_path}/views/item/_search.php", "{$module_path}/views/".mb_strtolower($this->item_item_name)."/_search.php");
+            $this->rename_file("{$module_path}/views/item/update.php", "{$module_path}/views/".mb_strtolower($this->item_item_name)."/update.php");
+            $this->rename_file("{$module_path}/views/item/view.php", "{$module_path}/views/".mb_strtolower($this->item_item_name)."/view.php");
+
+            mkdir("{$module_path}/views/".mb_strtolower($this->item_item_name)."-upload");
+            $this->rename_file("{$module_path}/views/item-upload/create.php", "{$module_path}/views/".mb_strtolower($this->item_item_name)."-upload/create.php");
+            $this->rename_file("{$module_path}/views/item-upload/_form.php", "{$module_path}/views/".mb_strtolower($this->item_item_name)."-upload/_form.php");
+            $this->rename_file("{$module_path}/views/item-upload/index.php", "{$module_path}/views/".mb_strtolower($this->item_item_name)."-upload/index.php");
+            $this->rename_file("{$module_path}/views/item-upload/_search.php", "{$module_path}/views/".mb_strtolower($this->item_item_name)."-upload/_search.php");
+            $this->rename_file("{$module_path}/views/item-upload/update.php", "{$module_path}/views/".mb_strtolower($this->item_item_name)."-upload/update.php");
+            $this->rename_file("{$module_path}/views/item-upload/view.php", "{$module_path}/views/".mb_strtolower($this->item_item_name)."-upload/view.php");
+
         } else {
             unlink("{$module_path}/controllers/ItemController.php");
             unlink("{$module_path}/controllers/ItemUploadController.php");
@@ -466,7 +482,7 @@ $ret = '        ${ITEM_NAME_LOWCASE}SearchModel = new {_OBJECT_MODEL_NAME_}{ITEM
         ${ITEM_NAME_LOWCASE}DataProvider = ${ITEM_NAME_LOWCASE}SearchModel->search(Yii::$app->request->queryParams, [
             "{_ITEM_TABLE_PARENT_ID_FIELD_}" => $model->id
         ]);
-        $itemDataProvider->setSort(["defaultOrder" => ["id" => SORT_DESC]]);
+        ${ITEM_NAME_LOWCASE}DataProvider->setSort(["defaultOrder" => ["id" => SORT_DESC]]);
 ';
 
         $ret = str_replace("{ITEM_NAME}", $this->item_item_name, $ret);
