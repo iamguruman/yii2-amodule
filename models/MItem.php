@@ -107,12 +107,12 @@ class {_OBJECT_ITEM_MODEL_NAME_} extends \yii\db\ActiveRecord
         
         $arr = [];
         
-        $arr [] = ['/{_MODULE_ID_}/item/view', 'id' => $this->id];
+        $arr [] = ['/{_MODULE_ID_}/{ITEM_NAME_LOWCASE}/view', 'id' => $this->id];
         
         if($return == 'array'){
             return $arr;
         } elseif ($return == 'string'){
-            return "/{_MODULE_ID_}/item/view?id={$this->id}";
+            return "/{_MODULE_ID_}/{ITEM_NAME_LOWCASE}/view?id={$this->id}";
         } else {
             return $arr;
         }
@@ -123,7 +123,7 @@ class {_OBJECT_ITEM_MODEL_NAME_} extends \yii\db\ActiveRecord
      * @return array
      */
     public function getUrlIndex(){
-        return ['/{_MODULE_ID_}/item/index'];
+        return ['/{_MODULE_ID_}/{ITEM_NAME_LOWCASE}/index'];
     }
 
     public function getUrlTo($target = null){
@@ -218,7 +218,7 @@ class {_OBJECT_ITEM_MODEL_NAME_} extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return {_OBJECT_MODEL_NAME_}ItemQuery the active query used by this AR class.
+     * @return {_OBJECT_MODEL_NAME_}{ITEM_NAME}Query the active query used by this AR class.
      */
     public static function find()
     {
