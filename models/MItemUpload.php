@@ -42,7 +42,7 @@ use app\modules\teams\models\Team;
  * ПОЛЕ ИДЕНТИФИКАТОР ОБЪЕКТА, к котором цепляем файл:
  *
  * @property int $object_id
- * @property {_OBJECT_MODEL_NAME_}Item $object
+ * @property {_OBJECT_MODEL_NAME_}{ITEM_NAME} $object
  *
  *
  * СПИСОК ИНДИВИДУАЛЬНЫХ ПОЛЕЙ:
@@ -73,7 +73,7 @@ class {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload extends \yii\db\ActiveRecord
             [['team_by'], 'integer'],
 
             [['object_id'], 'integer'], // - главный объект к которому привязывается файл
-            [['object_id'], 'exist', 'skipOnError' => true, 'targetClass' => {_OBJECT_MODEL_NAME_}Item::className(), 'targetAttribute' => ['object_id' => 'id']],
+            [['object_id'], 'exist', 'skipOnError' => true, 'targetClass' => {_OBJECT_MODEL_NAME_}{ITEM_NAME}::className(), 'targetAttribute' => ['object_id' => 'id']],
 
             [['created_at', 'updated_at', 'markdel_at'], 'string'],
 
@@ -140,7 +140,7 @@ class {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload extends \yii\db\ActiveRecord
      */
     public function getObject()
     {
-        return $this->hasOne({_OBJECT_MODEL_NAME_}Item::className(), ['id' => 'object_id']);
+        return $this->hasOne({_OBJECT_MODEL_NAME_}{ITEM_NAME}::className(), ['id' => 'object_id']);
     }
 
     /**
@@ -177,10 +177,10 @@ class {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload extends \yii\db\ActiveRecord
 
     /**
      * {@inheritdoc}
-     * @return {_OBJECT_MODEL_NAME_}ItemUpload the active query used by this AR class.
+     * @return {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload the active query used by this AR class.
      */
     public static function find()
     {
-        return new {_OBJECT_MODEL_NAME_}ItemUploadQuery(get_called_class());
+        return new {_OBJECT_MODEL_NAME_}{ITEM_NAME}UploadQuery(get_called_class());
     }
 }
