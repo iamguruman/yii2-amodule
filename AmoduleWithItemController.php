@@ -273,14 +273,14 @@ class AmoduleWithItemController extends Controller
         $file_content = str_replace("{ITEM_TITLE}", $this->item_title, $file_content);
 
         if($this->create_item_crud){
-            $file_content = str_replace("{DEFAULT_CONTROLLER_USE_ITEM_SEARCH}", 'use app\modules\\'.$this->module_id.'\models\\'.$this->object_model_name.'ItemSearch;', $file_content);
+            $file_content = str_replace("{DEFAULT_CONTROLLER_USE_ITEM_SEARCH}", 'use app\modules\\'.$this->module_id.'\models\\'.$this->object_model_name.$this->item_item_name.'Search;', $file_content);
         } else {
             $file_content = str_replace("{DEFAULT_CONTROLLER_USE_ITEM_SEARCH}", "", $file_content);
         }
 
         $file_content = str_replace("        {DEFAULT_CONTROLLER_VIEW_ACTION__ITEMS_DATA_PROVIDER}", $this->itemSearcModelAndDataProviderForDefaultController(), $file_content);
         $file_content = str_replace("        {VIEW_ACTION_TABS_WIDGET_ITEMS}", $this->viewActionTabsWidgetItems(), $file_content);
-        $file_content = str_replace("{DEFAULT_CONTROLLER_VIEW_ACTION__ITEMS_PARAMS}", $this->viewActionTabsWidgetItemsParams(), $file_content);
+        $file_content = str_replace("{DEFAULT_CONTROLLER_VIEW_ACTION__ITEMS_PARAMS}", $this->viewActionTabsWidgetItemsParams(), $file_content); 
 
         file_put_contents($file_path, $file_content);
 
