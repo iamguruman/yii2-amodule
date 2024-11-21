@@ -13,9 +13,9 @@ use yii\filters\VerbFilter;
 use Yii;
 
 /**
- * DefaultController implements the CRUD actions for {_OBJECT_MODEL_NAME_}{ITEM_NAME} model.
+ * {ITEM_NAME}Controller implements the CRUD actions for {_OBJECT_MODEL_NAME_}{ITEM_NAME} model.
  */
-class ItemController extends Controller
+class {ITEM_NAME}Controller extends Controller
 {
     /**
      * {@inheritdoc}
