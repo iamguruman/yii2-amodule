@@ -19,13 +19,13 @@ class {_OBJECT_MODEL_NAME_}{ITEM_NAME}Query extends \yii\db\ActiveQuery
         parent::init();
 
         if(aIfHideMarkdel()){
-            $this->andWhere([{_OBJECT_MODEL_NAME_}Item::tableName().'.markdel_by' => null]);
+            $this->andWhere([{_OBJECT_MODEL_NAME_}{ITEM_NAME}::tableName().'.markdel_by' => null]);
         }
     }
 
     /**
      * {@inheritdoc}
-     * @return {_OBJECT_MODEL_NAME_}Item[]|array
+     * @return {_OBJECT_MODEL_NAME_}{ITEM_NAME}[]|array
      */
     public function all($db = null)
     {
@@ -34,7 +34,7 @@ class {_OBJECT_MODEL_NAME_}{ITEM_NAME}Query extends \yii\db\ActiveQuery
 
     /**
      * {@inheritdoc}
-     * @return {_OBJECT_MODEL_NAME_}Item|array|null
+     * @return {_OBJECT_MODEL_NAME_}{ITEM_NAME}|array|null
      */
     public function one($db = null)
     {
