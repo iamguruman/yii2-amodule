@@ -2,15 +2,15 @@
 
 namespace app\modules\{_MODULE_ID_}\models;
 
-use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}ItemUpload;
+use app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * {_OBJECT_MODEL_NAME_}ItemUploadSearch represents the model behind the search form 
- * of `app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}ItemUpload`.
+ * {_OBJECT_MODEL_NAME_}{ITEM_NAME}UploadSearch represents the model behind the search form 
+ * of `app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload`.
  */
-class {_OBJECT_MODEL_NAME_}ItemUploadSearch extends {_OBJECT_MODEL_NAME_}ItemUpload
+class {_OBJECT_MODEL_NAME_}{ITEM_NAME}UploadSearch extends {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload
 {
     /**
      * {@inheritdoc}
@@ -44,7 +44,7 @@ class {_OBJECT_MODEL_NAME_}ItemUploadSearch extends {_OBJECT_MODEL_NAME_}ItemUpl
      */
     public function search($params, $params2 = [])
     {
-        $query = {_OBJECT_MODEL_NAME_}ItemUpload::find();
+        $query = {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload::find();
 
         // add conditions that should always apply here
 
