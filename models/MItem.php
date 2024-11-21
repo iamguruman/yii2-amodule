@@ -213,7 +213,7 @@ class {_OBJECT_ITEM_MODEL_NAME_}{ITEM_NAME} extends \yii\db\ActiveRecord
      */
     public function getUploads()
     {
-        return $this->hasMany({_OBJECT_MODEL_NAME_}ItemUpload::className(), ['object_id' => 'id']);
+        return $this->hasMany({_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload::className(), ['object_id' => 'id']);
     }
 
     /**
@@ -222,7 +222,7 @@ class {_OBJECT_ITEM_MODEL_NAME_}{ITEM_NAME} extends \yii\db\ActiveRecord
      */
     public static function find()
     {
-        return new {_OBJECT_MODEL_NAME_}ItemQuery(get_called_class());
+        return new {_OBJECT_MODEL_NAME_}{ITEM_NAME}Query(get_called_class());
     }
 
     public function getParentObject()
