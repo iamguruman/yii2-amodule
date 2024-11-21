@@ -59,7 +59,7 @@ class {_OBJECT_SEARCH_MODEL_NAME_} extends {_OBJECT_MODEL_NAME_}
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'id' => $this->id,
+            //'id' => $this->id,
             'created_at' => $this->created_at,
             'created_by' => $this->created_by,
             'updated_at' => $this->updated_at,
@@ -67,10 +67,17 @@ class {_OBJECT_SEARCH_MODEL_NAME_} extends {_OBJECT_MODEL_NAME_}
             'markdel_at' => $this->markdel_at,
             'markdel_by' => $this->markdel_by,
         ]);
+
+        $query->andFilterWhere(['id' => $this->id]);
+        //    ->andFilterWhere(['like', 'date', $this->date])  
         
-        $query->andFilterWhere(['like', 'name', $this->name]);
+        //$query->andFilterWhere(['like', 'name', $this->name]);
         //    ->andFilterWhere(['like', 'date', $this->date])
-        //;
+        if(!empty($this->name)){
+            foreach (explode("+", $this->name) as $val) {
+                $query->andFilterWhere(['or', ['like', 'name', $val]]);
+            }
+        }           
 
         if(!empty($params2['qname'])){
             foreach (explode("+", $params2['qname']) as $val) {
