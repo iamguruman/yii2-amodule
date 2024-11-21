@@ -4,12 +4,12 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}ItemUploadSearch */
+/* @var $model app\modules\{_MODULE_ID_}\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}UploadSearch */
 /* @var $form yii\widgets\ActiveForm */
 
 ?>
 
-<div class="{_MODULE_ID_}-item-upload-search">
+<div class="{_MODULE_ID_}-{ITEM_NAME_LOWCASE}-upload-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
