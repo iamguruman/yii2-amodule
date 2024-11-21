@@ -19,7 +19,7 @@ $module = app\modules\{_MODULE_ID_}\Module::moduleId;
 
     <?= (aIfModuleControllerAction($module, "{ITEM_NAME_LOWCASE}-upload", "update")) ? $form->field($model, 'filename_original')->textInput(['maxlength' => true]) : null ?>
 
-    <?= aIfModuleControllerAction($module, "ITEM_NAME_LOWCASE-upload", "create") ?
+    <?= aIfModuleControllerAction($module, "{ITEM_NAME_LOWCASE}-upload", "create") ?
         $form->field($model, 'files[]')
             ->fileInput(['multiple' => true])
         //->fileInput(['multiple' => true])
