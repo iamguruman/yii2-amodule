@@ -6,9 +6,9 @@ use yii\base\Model;
 use yii\data\ActiveDataProvider;
 
 /**
- * {_OBJECT_MODEL_NAME_}ItemSearch represents the model behind the search form of `app\modules\_MODULE_ID_\models\{_OBJECT_MODEL_NAME_}Item`.
+ * {_OBJECT_MODEL_NAME_}{ITEM_NAME}Search represents the model behind the search form of `app\modules\_MODULE_ID_\models\{_OBJECT_MODEL_NAME_}{ITEM_NAME}`.
  */
-class {_OBJECT_MODEL_NAME_}ItemSearch extends {_OBJECT_MODEL_NAME_}Item
+class {_OBJECT_MODEL_NAME_}{ITEM_NAME}Search extends {_OBJECT_MODEL_NAME_}{ITEM_NAME}
 {
     /**
      * {@inheritdoc}
@@ -40,7 +40,7 @@ class {_OBJECT_MODEL_NAME_}ItemSearch extends {_OBJECT_MODEL_NAME_}Item
      */
     public function search($params, $params2 = [])
     {
-        $query = {_OBJECT_MODEL_NAME_}Item::find();
+        $query = {_OBJECT_MODEL_NAME_}{ITEM_NAME}::find();
 
         // add conditions that should always apply here
 
