@@ -21,7 +21,7 @@ if($model->object){
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
-<div class="{_MODULE_ID_}-item-upload-create">
+<div class="{_MODULE_ID_}-{ITEM_NAME_LOWCASE}-upload-create">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
