@@ -49,7 +49,7 @@ use app\modules\teams\models\Team;
  * @property int $type_xx
  *
  */
-class {_OBJECT_MODEL_NAME_}ItemUpload extends \yii\db\ActiveRecord
+class {_OBJECT_MODEL_NAME_}{ITEM_NAME}Upload extends \yii\db\ActiveRecord
 {
 
     public $files;
@@ -59,7 +59,7 @@ class {_OBJECT_MODEL_NAME_}ItemUpload extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return '{_OBJECT_TABLE_NAME_}__item_upload';
+        return '{_OBJECT_TABLE_NAME_}__{ITEM_NAME_LOWCASE}_upload';
     }
 
     /**
