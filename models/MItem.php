@@ -37,10 +37,20 @@ use app\modules\fileserver\components\FileServerGetLink;
  *
  * @property string ${_ITEM_TABLE_PARENT_ID_FIELD_}
  * @property-read {_OBJECT_MODEL_NAME_} $parentObject
+ * 
+ * @property $viewIndex
+ * @property $viewCreate
+ * @property $viewView
+ * @property $viewUpdate
  *
  */
 class {_OBJECT_ITEM_MODEL_NAME_} extends \yii\db\ActiveRecord
 {
+    public static $viewIndex = "@app/modules/{_MODULE_ID_}/views/default/index.php";
+    public static $viewCreate = "@app/modules/{_MODULE_ID_}/views/default/create.php";
+    public static $viewView = "@app/modules/{_MODULE_ID_}/views/default/view.php";
+    public static $viewUpdate = "@app/modules/{_MODULE_ID_}/views/default/update.php";
+                       
     /**
      * {@inheritdoc}
      */
