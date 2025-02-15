@@ -68,7 +68,7 @@ class {_OBJECT_MODEL_NAME_}{ITEM_NAME}Search extends {_OBJECT_MODEL_NAME_}{ITEM_
         ]);
         
         $query->andFilterWhere(['like', 'name', $this->name]);
-        //    ->andFilterWhere(['like', 'date', $this->date])
+        //$query->andFilterWhere(['like', 'date', $this->date]);
         //;
         
         /*
