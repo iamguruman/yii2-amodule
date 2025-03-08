@@ -26,9 +26,9 @@ if(aIfModuleControllerAction($module, $controller, $action)){
     <?= aHtmlHeader($this->title, $module, $controller, $action) ?>
 
     <p>
-        <?= aIfModuleControllerAction($module, $controller, $action) ?
-            Html::a('Добавить', ["/{$module}/{$controller}/create"], ['class' => 'btn btn-success'])
-            : null  ?>
+        <?php if(aIfModuleControllerAction($module, $controller, $action)): ?>
+            <?= Html::a('Добавить', ["/{$module}/{$controller}/create"], ['class' => 'btn btn-success']) ?>
+        <?php endif; ?>
     </p>
 
     <?php Pjax::begin(); ?>
