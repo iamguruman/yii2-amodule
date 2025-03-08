@@ -26,14 +26,14 @@ if(aIfModuleControllerAction($module, $controller, $action)){
 
     <p>
 
-        <?= aIfModuleControllerAction($module, 'default', 'view') ?
-            Html::a('Добавить',
+        <?php if(aIfModuleControllerAction($module, 'default', 'view')): ?>
+            <?= Html::a('Добавить',
                 ["/{$module}/{$controller}/create",
                     'returnto' => urlencode($_SERVER['REQUEST_URI']."&tab=files"),
                     'object' => aGet('id')
                 ],
-                ['class' => 'btn btn-success'])
-            : null  ?>
+                ['class' => 'btn btn-success']) ?>
+        <?php endif; ?>
 
     </p>
 
