@@ -26,16 +26,16 @@ if(aIfModuleControllerAction($module, $controller, $action)){
     <?= aHtmlHeader($this->title, $module, $controller, $action) ?>
 
     <p>
-        <?= aIfModuleControllerAction($module, 'default', 'view') ?
-            Html::a('Добавить', ["/{$module}/{$controller}/create",
+        <?php if(aIfModuleControllerAction($module, 'default', 'view')): ?>
+            <?= Html::a('Добавить', ["/{$module}/{$controller}/create",
                 '{_ITEM_TABLE_PARENT_ID_FIELD_}' => aGet('id'),
                 'returnto' => $_SERVER['REQUEST_URI']],
-                    ['class' => 'btn btn-success'])
-            : null  ?>
+                    ['class' => 'btn btn-success']) ?>
+        <?php endif; ?>
 
-        <?= aIfModuleControllerAction($module, $controller, $action) ?
-            Html::a('Добавить', ["/{$module}/{$controller}/create"], ['class' => 'btn btn-success'])
-            : null  ?>
+        <?php if(aIfModuleControllerAction($module, $controller, $action)): ?>
+            <?= Html::a('Добавить', ["/{$module}/{$controller}/create"], ['class' => 'btn btn-success']) ?>
+        <?php endif; ?>
     </p>
 
     <?php Pjax::begin(); ?>
