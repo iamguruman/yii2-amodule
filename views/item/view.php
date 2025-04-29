@@ -35,6 +35,28 @@ if(aIfModuleControllerAction("{_MODULE_ID_}", "{ITEM_NAME_LOWCASE}", "view")){
         'model' => $model,
         'attributes' => [
             'name',
+                           
+            $model->markdelBy ? [
+                'format' => 'raw',
+                'attribute' => 'markdel_by',
+                'value' => function (\app\modules\nomspec\models\MNomspecSpec $model) {
+                    $ret = [];
+            
+                    if($model->markdel_at){
+                        $ret [] = "<i class='fas fa-trash' style='color: red;'></i>";
+                    }
+            
+                    if($model->markdelBy){
+                        $ret [] = $model->markdelBy->lastnameWithInitials;
+                    }
+            
+                    if($model->markdel_at){
+                        $ret [] = $model->markdel_at;
+                    }
+            
+                    return implode(" ", $ret);
+                }
+            ] : ['visible' => false],
         ],
     ]) ?>
 
