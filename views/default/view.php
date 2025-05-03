@@ -61,7 +61,7 @@ if(aIfModuleControllerAction("{_MODULE_ID_}", "default", "view")){
         [
             'label' => 'ID',
             'active' => false,
-            'content' => DetailView::widget([
+            'content' => "<br>".DetailView::widget([
                 'model' => $model,
                 'attributes' => [
                     'id',
