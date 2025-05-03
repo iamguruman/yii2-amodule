@@ -5,7 +5,8 @@ namespace app\modules\{_MODULE_ID_}\models;
 use Yii;
 use app\modules\users\models\User;
 use app\modules\teams\models\Team;
-
+use app\modules\fileserver\components\FileServerGetLink;
+                       
 /**
  * This is the model class for table "{_UPLOAD_MODEL_NAME_}".
  *
@@ -47,6 +48,8 @@ use app\modules\teams\models\Team;
  *
  * СПИСОК ИНДИВИДУАЛЬНЫХ ПОЛЕЙ:
  * @property int $type_xx
+ *
+ * @property-read string $urlToFile
  *
  */
 class {_UPLOAD_MODEL_NAME_} extends \yii\db\ActiveRecord
@@ -181,5 +184,10 @@ class {_UPLOAD_MODEL_NAME_} extends \yii\db\ActiveRecord
     public static function find()
     {
         return new {_UPLOAD_MODEL_QUERY_}(get_called_class());
+    }
+
+    public function getUrlToFile()
+    {
+        return FileServerGetLink::http($this->md5, $this->ext);
     }
 }
